@@ -11,11 +11,10 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141102163453) do
+ActiveRecord::Schema.define(version: 20141102190508) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
-    t.string   "author"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.string   "journal"
@@ -31,5 +30,16 @@ ActiveRecord::Schema.define(version: 20141102163453) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "publications", force: true do |t|
+    t.integer  "author_id"
+    t.integer  "article_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "publications", ["article_id"], name: "index_publications_on_article_id"
+  add_index "publications", ["author_id", "article_id"], name: "index_publications_on_author_id_and_article_id", unique: true
+  add_index "publications", ["author_id"], name: "index_publications_on_author_id"
 
 end
