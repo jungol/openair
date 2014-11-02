@@ -8,6 +8,8 @@ describe Article do
 		subject { article }
 		it { should respond_to(:title) }
 		it { should respond_to(:abstract) }
+		it { should respond_to(:authors) }
+		it { should respond_to(:sections)}
 		it { should be_valid }
 	
 	end

@@ -29,14 +29,18 @@ RSpec.describe "Article", :type => :feature do
 
   describe "display page" do
 
-    it "shows the right article" do
-    	article = FactoryGirl.create(:article)
+    it "shows the article contents" do
+    	article = FactoryGirl.create(:article_with_sections)
     	article.authors << FactoryGirl.create(:author)
       visit article_path(article)
     	expect(page).to have_selector('h1', text: article.title)
     	expect(page).to have_selector('li#abstract', text: article.abstract)
     	expect(page).to have_selector('li.author', text: article.authors.first.first_name)
-      expect(page).to have_selector('li.section', text: article.sections.first.heading)
+      article.sections.each do |section|
+        expect(page).to have_selector('li.section', text: section.heading)
+        expect(page).to have_selector('li.section', text: section.content)
+
+      end
     end
   end
   

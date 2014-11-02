@@ -1,9 +1,23 @@
 FactoryGirl.define  do
+  
+  factory :section do
+    sequence(:heading) { |n| "Heading #{n}" }
+    sequence(:content) { |n| "Lorum Ipsum"*10}
+    article
+  end
+
   factory :article do
     sequence(:title)    { |n| "Title #{n}"    }
-    sequence(:abstract) { |n| "Abstract #{n}" }
-    
-
+    sequence(:abstract) { |n| "Abstract #{n}"}
+  
+    factory :article_with_sections do
+      transient do
+      	sections_count 5
+      end
+      after(:create) do |article, evaluator|
+      	create_list(:section, evaluator.sections_count, article: article)
+      end
+    end
   end
 
   factory :author do
@@ -11,5 +25,3 @@ FactoryGirl.define  do
   	sequence(:last_name)  { |n| "Last_Name #{n}"  }
   end
 end
-
-
