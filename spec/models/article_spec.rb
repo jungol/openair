@@ -15,6 +15,7 @@ describe Article do
 	describe "with invalid information:" do
     
     context "no title" do
+      
       let(:article) { FactoryGirl.build(:article, title: "" ) }
     	subject { article }
       it { should_not be_valid }
@@ -23,8 +24,8 @@ describe Article do
     it "has no author" do
     	pending
     	article =  FactoryGirl.build(:article, author: "") 
+    	article.authors = nil
     	subject { article }
-    	pending
       expect(article).not_to be_valid
     end
   end

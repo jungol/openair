@@ -11,3 +11,5 @@ FactoryGirl.define  do
   	sequence(:last_name)  { |n| "Last_Name #{n}"  }
   end
 end
+
+
