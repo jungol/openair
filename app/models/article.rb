@@ -1,4 +1,8 @@
 class Article < ActiveRecord::Base
+	has_one :publication, class_name: "Publication",
+													foreign_key: "article_id"
+	has_many :authors, through: :publication
+
   validates :title, presence: true
   # validates :author, presence: true
   VALID_YEAR_REGEX = /(19|20)\d{2}/i
