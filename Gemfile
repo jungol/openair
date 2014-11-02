@@ -3,10 +3,19 @@ ruby '2.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
+gem 'shoulda-matchers', require: false
+gem 'minitest'
+gem 'haml'
+
+group :development do
+  gem 'guard-spork'
+  gem 'guard-rspec', require: false
+
+end
 
 group :development, :test do 
   gem 'sqlite3'
-  gem 'rspec-rails' 
+  gem 'rspec-rails', '~> 3.1.0'
 end
 
 group :assets do
@@ -16,7 +25,10 @@ group :assets do
 end
 
 group :test do
-  gem 'capybara'
+  gem 'selenium-webdriver'
+  gem 'capybara', '~> 2.3.0'
+  gem 'spork-rails', '~> 4.0.0'
+  gem 'factory_girl_rails'
 end
 
 group :production do
