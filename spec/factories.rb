@@ -1,18 +1,13 @@
 FactoryGirl.define  do
   factory :article do
-    title "title"
-    journal "journal"
-    year 2014
-    volume "1"
-    issue "1"
-    abstract "abstract"
+    sequence(:title)    { |n| "Title #{n}"    }
+    sequence(:abstract) { |n| "Abstract #{n}" }
     
+
   end
 
   factory :author do
-  	first_name "first_name"
-  	last_name "last_name"
-  	
+  	sequence(:first_name) { |n| "First_Name #{n}" }
+  	sequence(:last_name)  { |n| "Last_Name #{n}"  }
   end
-
 end

@@ -14,6 +14,7 @@ RSpec.describe "Articles", :type => :feature do
 		end
 
 		it "displays the article author" do
+			pending
 			visit root_path
 			expect(page).to have_content(article_1.author)
 		end
