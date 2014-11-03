@@ -1,8 +1,8 @@
 class Article < ActiveRecord::Base
-	has_one :publication, class_name: "Publication",
+	has_one :published_article, class_name: "PublishedArticle",
 													foreign_key: "article_id",
 													dependent: :destroy
-	has_many :authors, through: :publication
+	has_many :authors, through: :published_article
 	has_many :sections
 	has_many :citations, foreign_key: "citing_id"
 	has_many :cited_articles, through: :citations, source: :cited

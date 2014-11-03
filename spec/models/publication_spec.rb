@@ -1,20 +1,20 @@
 require 'rails_helper'
 
-RSpec.describe Publication, :type => :model do
+RSpec.describe PublishedArticle, :type => :model do
   let(:article) { FactoryGirl.create(:article)}
   let(:author) { FactoryGirl.create(:author)}
-  let(:publication) { author.publications.build(article_id: article.id) }
+  let(:published_article) { author.published_articles.build(article_id: article.id) }
   
-  subject { publication }
+  subject { published_article }
   it { should be_valid }
 
   describe "when article is not present" do
-    before { publication.article_id = nil }
+    before { published_article.article_id = nil }
     it { should_not be_valid}
   end
 
   describe "when author is not present" do
-    before { publication.author_id = nil }
+    before { published_article.author_id = nil }
     it { should_not be_valid}
   end
 end

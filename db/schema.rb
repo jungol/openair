@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141103164032) do
+ActiveRecord::Schema.define(version: 20141103195221) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -38,16 +38,16 @@ ActiveRecord::Schema.define(version: 20141103164032) do
   add_index "citations", ["citing_id", "cited_id"], name: "index_citations_on_citing_id_and_cited_id", unique: true
   add_index "citations", ["citing_id"], name: "index_citations_on_citing_id"
 
-  create_table "publications", force: true do |t|
+  create_table "published_articles", force: true do |t|
     t.integer  "author_id"
     t.integer  "article_id"
     t.datetime "created_at"
     t.datetime "updated_at"
   end
 
-  add_index "publications", ["article_id"], name: "index_publications_on_article_id"
-  add_index "publications", ["author_id", "article_id"], name: "index_publications_on_author_id_and_article_id", unique: true
-  add_index "publications", ["author_id"], name: "index_publications_on_author_id"
+  add_index "published_articles", ["article_id"], name: "index_published_articles_on_article_id"
+  add_index "published_articles", ["author_id", "article_id"], name: "index_published_articles_on_author_id_and_article_id", unique: true
+  add_index "published_articles", ["author_id"], name: "index_published_articles_on_author_id"
 
   create_table "sections", force: true do |t|
     t.string   "heading"

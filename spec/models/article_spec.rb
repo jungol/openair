@@ -12,7 +12,7 @@ describe Article do
 		it { should respond_to(:sections)}
     it { should respond_to(:citations)}
     it { should respond_to(:cited_articles)}
-    it { should respond_to(:publication)}
+    it { should respond_to(:published_article)}
     it { should respond_to(:cite!)}
     it { should respond_to(:citing?)}
     it { should respond_to(:citing_articles)}
