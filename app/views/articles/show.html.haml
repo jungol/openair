@@ -1,12 +1,14 @@
 - provide(:title, "Read Article")
 %h1= @article.title
+%li.author
+  AUTHORS
+  - @article.authors.each do |author|
+    = author.first_name
+    = author.last_name
 %ul
-  %li#abstract= @article.abstract
-  %li.author
-    - @article.authors.each do |author|
-      = author.first_name
+  %li#abstract= "ABSTRACT: #{@article.abstract}"
   %li.section
     - @article.sections.each do |section|
+      CONTENT
       = section.heading
       = section.content
-

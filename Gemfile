@@ -6,6 +6,7 @@ gem 'rails', '4.1.6'
 gem 'shoulda-matchers', require: false
 gem 'minitest'
 gem 'haml'
+gem 'faker'
 
 group :development do
   gem 'guard-spork'

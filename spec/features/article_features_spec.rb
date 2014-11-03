@@ -35,15 +35,15 @@ RSpec.describe "Article", :type => :feature do
       visit article_path(article)
     	expect(page).to have_selector('h1', text: article.title)
     	expect(page).to have_selector('li#abstract', text: article.abstract)
-    	expect(page).to have_selector('li.author', text: article.authors.first.first_name)
+    	article.authors.each do |author|
+    		expect(page).to have_selector('li.author', text: author.first_name)
+			end
       article.sections.each do |section|
-        expect(page).to have_selector('li.section', text: section.heading)
-        expect(page).to have_selector('li.section', text: section.content)
-
+      	expect(page).to have_selector('li.section', text: section.heading)
+      	expect(page).to have_selector('li.section', text: section.content)
       end
     end
   end
-  
 end
 
 
