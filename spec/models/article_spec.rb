@@ -1,6 +1,6 @@
 require 'rails_helper'
 
-describe Article do
+describe Article, :type => :model do
   
   describe "with valid information" do
 
@@ -17,6 +17,7 @@ describe Article do
     it { should respond_to(:citing?)}
     it { should respond_to(:citing_articles)}
     it { should respond_to(:reverse_citations)}
+    it { should respond_to(:publication)}
 		it { should be_valid }
 	
 	end

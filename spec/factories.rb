@@ -24,4 +24,10 @@ FactoryGirl.define  do
   	sequence(:first_name) { |n| "First_Name #{n}" }
   	sequence(:last_name)  { |n| "Last_Name #{n}"  }
   end
+
+  factory :publication do
+  	sequence(:year) { |n| "Year #{n}" }
+  	sequence(:issue) { |n| "Issue #{n}" }
+  	sequence(:volume) { |n| "Volume #{n}" }
+  end
 end

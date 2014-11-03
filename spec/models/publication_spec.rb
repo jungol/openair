@@ -1,20 +1,13 @@
 require 'rails_helper'
 
-RSpec.describe PublishedArticle, :type => :model do
-  let(:article) { FactoryGirl.create(:article)}
-  let(:author) { FactoryGirl.create(:author)}
-  let(:published_article) { author.published_articles.build(article_id: article.id) }
-  
-  subject { published_article }
-  it { should be_valid }
+RSpec.describe Publication, :type => :model do
+  let(:publication) { FactoryGirl.create(:publication)}
+  subject { publication }
+  it { should respond_to(:year)}
+  it { should respond_to(:issue)}
+  it { should respond_to(:volume)}
+  it { should respond_to(:articles)}
+  it { should respond_to(:authors)}
+  it { should respond_to(:published_articles)}
 
-  describe "when article is not present" do
-    before { published_article.article_id = nil }
-    it { should_not be_valid}
-  end
-
-  describe "when author is not present" do
-    before { published_article.author_id = nil }
-    it { should_not be_valid}
-  end
 end
