@@ -12,7 +12,6 @@ RSpec.describe PublishedArticle, :type => :model do
   it { should respond_to(:author)}
   it { should respond_to(:article)}
   it { should respond_to(:publication)}
-  it { should respond_to(:journal)}
 
   describe "when article is not present" do
     before { published_article.article_id = nil }

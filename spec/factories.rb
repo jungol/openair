@@ -30,4 +30,8 @@ FactoryGirl.define  do
   	sequence(:issue) { |n| "Issue #{n}" }
   	sequence(:volume) { |n| "Volume #{n}" }
   end
-end
+
+  factory :journal do
+  	sequence(:name) { |n| "Name #{n}"}
+  end
+end 
