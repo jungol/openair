@@ -11,7 +11,7 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141102231631) do
+ActiveRecord::Schema.define(version: 20141103164032) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
@@ -26,6 +26,17 @@ ActiveRecord::Schema.define(version: 20141102231631) do
     t.datetime "created_at"
     t.datetime "updated_at"
   end
+
+  create_table "citations", force: true do |t|
+    t.integer  "citing_id"
+    t.integer  "cited_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "citations", ["cited_id"], name: "index_citations_on_cited_id"
+  add_index "citations", ["citing_id", "cited_id"], name: "index_citations_on_citing_id_and_cited_id", unique: true
+  add_index "citations", ["citing_id"], name: "index_citations_on_citing_id"
 
   create_table "publications", force: true do |t|
     t.integer  "author_id"

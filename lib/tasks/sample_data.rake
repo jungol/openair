@@ -3,6 +3,7 @@ namespace :db do
   task populate: :environment do
     make_articles
     make_sections
+    make_citations
     make_authors
   end
 end
@@ -23,6 +24,16 @@ def make_sections
       heading = Faker::Lorem.sentence
       content = Faker::Lorem.paragraph
       article.sections.create!(heading: heading, content: content)
+    end
+  end
+end
+
+def make_citations
+  articles = Article.limit(10)
+  articles.each do |article|
+    2.times do
+      cited_article = Article.all.sample
+      article.cite!(cited_article) unless (cited_article == article)
     end
   end
 end

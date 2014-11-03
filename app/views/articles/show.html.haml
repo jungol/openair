@@ -12,3 +12,13 @@
       CONTENT
       = section.heading
       = section.content
+  %li.cited_articles
+    - @article.cited_articles.each do |citation|
+      CITED ARTICLE
+      = citation.title
+  %li.citing_articles
+    - @article.citing_articles.each do |citing|
+      CITED BY
+      = citing.title
+
+

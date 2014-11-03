@@ -10,6 +10,13 @@ describe Article do
 		it { should respond_to(:abstract) }
 		it { should respond_to(:authors) }
 		it { should respond_to(:sections)}
+    it { should respond_to(:citations)}
+    it { should respond_to(:cited_articles)}
+    it { should respond_to(:publication)}
+    it { should respond_to(:cite!)}
+    it { should respond_to(:citing?)}
+    it { should respond_to(:citing_articles)}
+    it { should respond_to(:reverse_citations)}
 		it { should be_valid }
 	
 	end
@@ -29,6 +36,21 @@ describe Article do
     	article.authors = nil
     	subject { article }
       expect(article).not_to be_valid
+    end
+  end
+
+  describe "citations" do
+    let(:article_1) { FactoryGirl.create(:article)}
+    let(:article_2) { FactoryGirl.create(:article)}
+    specify "are built with #cite!" do
+      article_1.cite!(article_2)
+      expect(article_1).to be_citing(article_2)
+      expect(article_1.cited_articles).to include(article_2)
+    end
+
+    specify "can identify which articles cite me" do
+      article_1.cite!(article_2)
+      expect(article_2.citing_articles).to include(article_1)
     end
   end
 end
