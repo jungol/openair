@@ -13,6 +13,7 @@ RSpec.describe Author, :type => :model do
 	  it { should respond_to(:articles)}
 	  it { should respond_to(:published_articles)}
 	  it { should respond_to(:publications)}
+	  it { should respond_to(:journals)}
 	  it { should be_valid }
 
 	  it "fixes upper- and lower-case letters before save" do

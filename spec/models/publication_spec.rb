@@ -9,5 +9,6 @@ RSpec.describe Publication, :type => :model do
   it { should respond_to(:articles)}
   it { should respond_to(:authors)}
   it { should respond_to(:published_articles)}
+  it { should respond_to(:journal)}
 
 end

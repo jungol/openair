@@ -32,10 +32,8 @@ describe Article, :type => :model do
 		end
     
     it "has no author" do
-    	pending
-    	article =  FactoryGirl.build(:article, author: "") 
-    	article.authors = nil
-    	subject { article }
+      pending
+    	article =  FactoryGirl.build(:article)
       expect(article).not_to be_valid
     end
   end

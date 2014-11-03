@@ -4,6 +4,6 @@ class PublishedArticle < ActiveRecord::Base
 	belongs_to :publication, class_name: "Publication"
 	validates :author_id, presence: true
 	validates :article_id, presence: true
-	#validates :publication_id, presence: true
+	#TODO: validates :publication_id, presence: true
 
 end
