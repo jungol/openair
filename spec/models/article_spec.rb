@@ -51,5 +51,25 @@ describe Article, :type => :model do
       article_1.cite!(article_2)
       expect(article_2.citing_articles).to include(article_1)
     end
+
+    specify "make_citation method works" do
+      article = FactoryGirl.create(:article, title: "Adam Smith and Laissez Faire")
+      author = FactoryGirl.create(:author, first_name: "Jacob", last_name: "Viner")
+      article.authors << author
+      publication = FactoryGirl.create(:publication, volume: 35, issue: 2, year: 1927)
+      publication.journal = FactoryGirl.create(:journal, name: "Journal of Political Economy")
+      article.publication = publication
+      expect(article.make_citation).to eq("Viner, J. (1927). Adam Smith and Laissez Faire. Journal of Political Economy, 35(2), pp. 437-456.")
+    end
   end
 end
+
+
+
+
+
+
+
+
+
+

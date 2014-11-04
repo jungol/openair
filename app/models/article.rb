@@ -24,13 +24,13 @@ class Article < ActiveRecord::Base
     self.authors.each do |author|
       authors << "#{author.last_name}, #{author.first_name[0]}."
     end
-    author_string = authors.map(&:inspect).join(', &')
+    author_string = authors.join(', &')
     year_published = self.publication.year
     title = self.title
-    #journal_name = self.publication.journal.name
+    journal_name = self.publication.journal.name
     volume = self.publication.volume
     issue = self.publication.issue
-    @citation = "#{author_string} (#{year_published}). #{title}. journal_name, #{volume}(#{issue}, pp. 437-456."
+    @citation = "#{author_string} (#{year_published}). #{title}. #{journal_name}, #{volume}(#{issue}), pp. 437-456."
     return @citation
   end
   
