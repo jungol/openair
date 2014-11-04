@@ -25,6 +25,21 @@ RSpec.describe "Article", :type => :feature do
   		pending
       expect(page).to have_title("Dashboard")
   	end
+
+    it "cites all articles" do
+		  article = FactoryGirl.create(:article)
+		  author = FactoryGirl.create(:author)
+		  publication = FactoryGirl.create(:publication)
+		  journal = FactoryGirl.create(:journal)
+  		article.authors << author
+  		publication.articles << article
+  		publication.journal = journal
+  		article.save
+  		publication.save
+      visit root_path
+      click_link "Cite All"
+			expect(page).to have_selector('li', article.make_citation)
+    end
   end
 
   describe "display page" do
@@ -50,6 +65,7 @@ RSpec.describe "Article", :type => :feature do
   	let(:author) { FactoryGirl.create(:author)}
   	let(:publication) { FactoryGirl.create(:publication)}
   	let(:journal) { FactoryGirl.create(:journal)}
+  	
   	it "displays citation made by make_citation" do
   		article.authors << author
   		article.publication = publication
