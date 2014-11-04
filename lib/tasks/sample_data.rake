@@ -11,14 +11,14 @@ namespace :db do
 end
 
 def make_journals
-  10.times do
+  2.times do
     Journal.create!(name: "Journal of #{Faker::Company.catch_phrase}")
   end
 end
 
 def make_publications
   journals = Journal.all
-  5.times do
+  2.times do
     issue = Faker::Number.digit
     year = 2014
     volume = Faker::Number.digit
@@ -28,7 +28,7 @@ end
 
 def make_articles
   publications = Publication.all
-  10.times do
+  2.times do
     title = Faker::Lorem.sentence
     abstract = Faker::Lorem.paragraph
     publications.each { |publication| publication.articles.create!(title: title, abstract: abstract)}
@@ -37,7 +37,7 @@ end
 
 def make_sections
   articles = Article.all
-  5.times do
+  2.times do
     heading = Faker::Lorem.sentence
     content = Faker::Lorem.paragraph
     articles.each { |article| article.sections.create!(heading: heading, content: content)}
@@ -56,7 +56,7 @@ end
 
 def make_citations
   articles = Article.all
-  5.times do
+  2.times do
     other_article = articles.all.sample
     articles.each do |article|
       article.cite!(other_article) unless article == other_article
