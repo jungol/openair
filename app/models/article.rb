@@ -1,7 +1,5 @@
 class Article < ActiveRecord::Base
-	has_many :edits, class_name: "Edit",
-													foreign_key: "article_id",
-													dependent: :destroy
+	has_many :edits
 	belongs_to :publication
 	has_many :authors, through: :edits
 	has_many :sections
