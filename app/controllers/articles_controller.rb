@@ -18,5 +18,4 @@ class ArticlesController < ApplicationController
     articles.each { |article| citations << article.make_citation }
     @citations = citations
   end
-
 end
