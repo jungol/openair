@@ -58,6 +58,18 @@ RSpec.describe "Article", :type => :feature do
       	expect(page).to have_selector('li.section', text: section.content)
       end
     end
+
+    it "has a table of contents" do
+      article = FactoryGirl.create(:article_with_sections)
+      visit article_path(article)
+      expect(page).to have_selector('div#contents', text: "Table of Contents" )
+      article.sections.each do |section|
+      	expect(page).to have_selector('li.section_heading', text: section.heading)
+      	#click_link "#{section.heading}"
+      	#url = URI.parse(current_url).request_uri
+      	#expect(url).to eq("#{article_path(article)}##{section.heading}")
+      end
+    end
   end
 
   describe "cite link" do

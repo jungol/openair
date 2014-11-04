@@ -6,11 +6,19 @@
   - @article.authors.each do |author|
     = author.first_name
     = author.last_name
+
+#contents
+  Table of Contents
+  -@article.sections.each do |section|
+    %li.section_heading
+      = link_to "#{section.heading}", anchor: "#{section.heading}"
+
 %ul
   %li#abstract= "ABSTRACT: #{@article.abstract}"
   %li.section
     - @article.sections.each do |section|
       CONTENT
+      %a{ id: "#{section.heading}"}
       = section.heading
       = section.content
   %li.cited_articles
