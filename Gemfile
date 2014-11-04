@@ -7,6 +7,10 @@ gem 'shoulda-matchers', require: false
 gem 'minitest'
 gem 'haml'
 gem 'faker'
+gem 'sass-rails', '~> 4.0.3' # Use SCSS for stylesheets
+gem 'coffee-rails', '~> 4.0.0' # Use CoffeeScript for .js.coffee assets and views
+gem 'uglifier', '>= 1.3.0' # Use Uglifier as compressor for JavaScript assets
+gem 'bootstrap-sass'
 
 group :development do
   gem 'guard-spork'
@@ -17,12 +21,6 @@ end
 group :development, :test do 
   gem 'sqlite3'
   gem 'rspec-rails', '~> 3.1.0'
-end
-
-group :assets do
-  gem 'sass-rails', '~> 4.0.3' # Use SCSS for stylesheets
-  gem 'coffee-rails', '~> 4.0.0' # Use CoffeeScript for .js.coffee assets and views
-  gem 'uglifier', '>= 1.3.0' # Use Uglifier as compressor for JavaScript assets
 end
 
 group :test do
