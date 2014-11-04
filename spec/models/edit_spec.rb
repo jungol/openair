@@ -1,23 +1,28 @@
 require 'rails_helper'
 
 RSpec.describe Edit, :type => :model do
-  let(:article) { FactoryGirl.create(:article)}
-  let(:author) { FactoryGirl.create(:author)}
-  let(:publication) { FactoryGirl.create(:publication)}
-  let(:edit) { author.edits.build(article_id: article.id) }
-  
-  subject { edit }
-  it { should be_valid }
-  it { should respond_to(:author)}
-  it { should respond_to(:article)}
+	let(:article) {FactoryGirl.create(:article)}
+	let(:author) {FactoryGirl.create(:author)}
+	before do
+		article.authors << author
+		@edit = article.edits.all.sample
+	end
 
-  describe "when article is not present" do
-    before { edit.article_id = nil }
-    it { should_not be_valid}
+  it "responds to valid methods" do
+  	expect(@edit).to respond_to(:author)
+  	expect(@edit).to respond_to(:article)
+  	expect(@edit).to be_valid
   end
 
-  describe "when author is not present" do
-    before { edit.author_id = nil }
-    it { should_not be_valid}
+  it "is invalid with no article" do
+  	@edit.article_id = nil
+    expect(@edit).not_to be_valid
   end
+
+  it "is invalid with no author" do
+  	@edit.author_id = nil
+    expect(@edit).not_to be_valid
+  end
+
 end
+

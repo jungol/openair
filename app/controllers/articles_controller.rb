@@ -9,13 +9,12 @@ class ArticlesController < ApplicationController
 
   def cite
   	article = Article.find_by_id(params[:id])
-    @citation = article.make_citation
+    @citation = article.build_citation
   end
 
   def cite_all
     articles = Article.all
-    citations = []
-    articles.each { |article| citations << article.make_citation }
-    @citations = citations
+    @citations = []
+    articles.each { |article| @citations << article.build_citation }
   end
 end

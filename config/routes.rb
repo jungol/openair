@@ -1,11 +1,7 @@
 Rails.application.routes.draw do
   resources :articles do
-    member do
-      get :cite
-    end
-    collection do
-      get :cite_all
-    end
+    get :cite, :on => :member
+    get :cite_all, :on => :collection
   end
   
   root 'articles#index'

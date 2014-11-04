@@ -1,94 +1,74 @@
 require 'rails_helper'
 
-RSpec.describe "Article", :type => :feature do
+RSpec.describe "Article feature:", :type => :feature do
   
-  describe "dashboard" do
+  before(:all) { 10.times { FactoryGirl.create(:article) } }
+  after(:all)  { Article.delete_all }
+  before(:each) { visit root_path }
 
-	  before(:all) { 30.times { FactoryGirl.create(:article) } }
-    after(:all)  { Article.delete_all }
-
-		it "should list each article with links" do
+  context "-- Dashboard --" do 
+	  it "lists every article" do
 			visit root_path
 			Article.all.each do |article|
 				expect(page).to have_selector('li', text: article.title)
 				expect(page).to have_link(article.title)
 			end
 		end
-
-		it "displays the article author" do
-			pending
-			visit root_path
-			expect(page).to have_content(article_1.author)
-		end
-
+  	
   	it "has the right title" do
-  		pending
       expect(page).to have_title("Dashboard")
   	end
+  end
 
-    it "cites all articles" do
-		  article = FactoryGirl.create(:article)
-		  author = FactoryGirl.create(:author)
-		  publication = FactoryGirl.create(:publication)
-		  journal = FactoryGirl.create(:journal)
-  		article.authors << author
-  		publication.articles << article
-  		publication.journal = journal
-  		article.save
-  		publication.save
-      visit root_path
+  context "-- Dashboard Citations --" do
+    specify "cite all button works" do
       click_link "Cite All"
-			expect(page).to have_selector('li', article.make_citation)
-    end
-  end
-
-  describe "display page" do
-
-    it "shows the article contents" do
-    	article = FactoryGirl.create(:article_with_sections)
-    	article.authors << FactoryGirl.create(:author)
-      visit article_path(article)
-    	expect(page).to have_selector('h1', text: article.title)
-    	expect(page).to have_selector('li#abstract', text: article.abstract)
-    	article.authors.each do |author|
-    		expect(page).to have_selector('li.author', text: author.first_name)
+			Article.all.each do |article| 
+				expect(page).to have_selector('li', article.build_citation)
 			end
-      article.sections.each do |section|
-      	expect(page).to have_selector('li.section', text: section.heading)
-      	expect(page).to have_selector('li.section', text: section.content)
-      end
-    end
-
-    it "has a table of contents" do
-      article = FactoryGirl.create(:article_with_sections)
-      visit article_path(article)
-      expect(page).to have_selector('div#contents', text: "Table of Contents" )
-      article.sections.each do |section|
-      	expect(page).to have_selector('li.section_heading', text: section.heading)
-      	#click_link "#{section.heading}"
-      	#url = URI.parse(current_url).request_uri
-      	#expect(url).to eq("#{article_path(article)}##{section.heading}")
-      end
-    end
+		end
   end
 
-  describe "cite link" do
-  	let(:article) { FactoryGirl.create(:article)}
-  	let(:author) { FactoryGirl.create(:author)}
-  	let(:publication) { FactoryGirl.create(:publication)}
-  	let(:journal) { FactoryGirl.create(:journal)}
-  	
-  	it "displays citation made by make_citation" do
-  		article.authors << author
-  		publication.articles << article
-  		publication.journal = journal
-  		article.save
-  		publication.save
+  context "-- Article Citations --" do
+  	specify "cite me button works" do
+  		article = Article.all.sample
   		visit article_path(article)
   		click_link "Cite"
-  		expect(page).to have_content(article.make_citation)
+  		expect(page).to have_content(article.build_citation)
   	end
   end
+
+	context "-- Article Display --" do
+
+		it "displays content" do
+		  article = Article.all.sample
+		  visit article_path(article)
+			expect(page).to have_content(article.title)
+			expect(page).to have_content(article.abstract)
+			article.authors.each do |author|
+				expect(page).to have_content(author.first_name)
+				expect(page).to have_content(author.last_name)
+			end
+			article.sections.each do |section|
+				expect(page).to have_content(section.heading)  				
+				expect(page).to have_content(section.content)
+			end
+		end
+
+		it "displays table of contents" do
+			article = Article.all.sample
+		  visit article_path(article)
+			expect(page).to have_content("Table of Contents")
+			article.sections.each do |section|
+    		expect(page).to have_link("#{section.heading}")
+    		pending "TODO - Not matching, but does match on localhost:3000" do
+    			uri = URI.parse(current_url)
+    			expect(uri.path).to eq("#{article_path(article)}##{section.heading}")
+    	  end
+    	end
+    end
+  end
 end
+
 
 

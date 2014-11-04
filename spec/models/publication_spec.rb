@@ -1,12 +1,15 @@
 require 'rails_helper'
 
 RSpec.describe Publication, :type => :model do
+  
   let(:publication) { FactoryGirl.create(:publication)}
   subject { publication }
-  it { should respond_to(:year)}
-  it { should respond_to(:issue)}
-  it { should respond_to(:volume)}
-  it { should respond_to(:articles)}
-  it { should respond_to(:journal)}
 
+  it "responds to valid methods" do
+    expect(publication).to respond_to(:year)
+  	expect(publication).to respond_to(:issue)
+  	expect(publication).to respond_to(:volume)
+  	expect(publication).to respond_to(:articles)
+  	expect(publication).to respond_to(:journal)
+  end
 end

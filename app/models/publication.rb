@@ -1,4 +1,7 @@
 class Publication < ActiveRecord::Base
-  has_many :articles
+  
+  #ASSOCIATIONS
   belongs_to :journal
+  has_many :articles
+  
 end
