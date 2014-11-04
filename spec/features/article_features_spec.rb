@@ -52,11 +52,13 @@ RSpec.describe "Article", :type => :feature do
   	let(:journal) { FactoryGirl.create(:journal)}
   	it "displays citation made by make_citation" do
   		article.authors << author
-  		article.publication = publication
+  		publication.articles << article
   		publication.journal = journal
+  		article.save
+  		publication.save
   		visit article_path(article)
   		click_link "Cite"
-  		expect(page).to have_content(make_citation(article))
+  		expect(page).to have_content(article.make_citation)
   	end
   end
 end

@@ -12,4 +12,10 @@ class ArticlesController < ApplicationController
     @citation = article.make_citation
   end
 
+  def cite_all
+  	articles = Article.all
+  	citations = []
+  	articles.each { |article| citations << article.make_citation }
+  	@citations = citations
+  end
 end
