@@ -20,5 +20,20 @@ class Article < ActiveRecord::Base
   def cite!(other_article)
   	self.citations.create!(cited_id: other_article.id)
   end
+
+  def make_citation
+    authors = []
+    self.authors.each do |author|
+      authors << "#{author.last_name}, #{author.first_name[0]}."
+    end
+    author_string = authors.map(&:inspect).join(', &')
+    year_published = self.publication.year
+    title = self.title
+    #journal_name = self.publication.journal.name
+    volume = self.publication.volume
+    issue = self.publication.issue
+    @citation = "#{author_string} (#{year_published}). #{title}. journal_name, #{volume}(#{issue}, pp. 437-456."
+    return @citation
+  end
   
 end

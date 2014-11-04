@@ -44,6 +44,21 @@ RSpec.describe "Article", :type => :feature do
       end
     end
   end
+
+  describe "cite link" do
+  	let(:article) { FactoryGirl.create(:article)}
+  	let(:author) { FactoryGirl.create(:author)}
+  	let(:publication) { FactoryGirl.create(:publication)}
+  	let(:journal) { FactoryGirl.create(:journal)}
+  	it "cites the current article" do
+  		article.authors << author
+  		article.publication = publication
+  		publication.journal = journal
+  		visit article_path(article)
+  		click_link "Cite"
+  		expect(page).to have_content(article.title)
+  	end
+  end
 end
 
 

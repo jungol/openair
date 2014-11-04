@@ -7,4 +7,9 @@ class ArticlesController < ApplicationController
     @article = Article.find_by_id(params[:id])
   end
 
+  def cite
+  	article = Article.find_by_id(params[:id])
+    @citation = article.make_citation
+  end
+
 end

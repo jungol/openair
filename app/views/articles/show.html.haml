@@ -1,5 +1,6 @@
 - provide(:title, "Read Article")
 %h1= @article.title
+%h2= link_to "Cite", cite_article_path(@article)
 %li.author
   AUTHORS
   - @article.authors.each do |author|

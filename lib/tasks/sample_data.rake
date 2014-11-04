@@ -5,6 +5,8 @@ namespace :db do
     make_sections
     make_citations
     make_authors
+    make_publications
+    #make_journals
   end
 end
 
@@ -31,9 +33,9 @@ end
 def make_citations
   articles = Article.limit(10)
   articles.each do |article|
-    2.times do
-      cited_article = Article.all.sample
-      article.cite!(cited_article) unless (cited_article == article)
+    cited_article = Article.all.sample
+    if cited_article != article
+      article.cite!(cited_article)
     end
   end
 end
@@ -48,4 +50,22 @@ def make_authors
     end
   end
 end
+
+def make_publications
+  articles = Article.limit(10)
+  articles.each do |article|
+    issue = Faker::Number.digit
+    year = 2014
+    volume = Faker::Number.digit
+    article.publication = Publication.create(issue: issue, year: year, volume: volume)
+  end
+end
+
+
+
+
+
+
+
+
 
