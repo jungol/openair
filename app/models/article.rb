@@ -1,9 +1,9 @@
 class Article < ActiveRecord::Base
-	has_one :published_article, class_name: "PublishedArticle",
+	has_many :edits, class_name: "Edit",
 													foreign_key: "article_id",
 													dependent: :destroy
-	has_one :publication, through: :published_article
-	has_many :authors, through: :published_article
+	belongs_to :publication
+	has_many :authors, through: :edits
 	has_many :sections
 	has_many :citations, foreign_key: "citing_id"
 	has_many :cited_articles, through: :citations, source: :cited

@@ -11,14 +11,17 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20141103222200) do
+ActiveRecord::Schema.define(version: 20141104143410) do
 
   create_table "articles", force: true do |t|
     t.string   "title"
     t.datetime "created_at"
     t.datetime "updated_at"
     t.text     "abstract"
+    t.integer  "publication_id"
   end
+
+  add_index "articles", ["publication_id"], name: "index_articles_on_publication_id"
 
   create_table "authors", force: true do |t|
     t.string   "first_name"
@@ -38,6 +41,17 @@ ActiveRecord::Schema.define(version: 20141103222200) do
   add_index "citations", ["citing_id", "cited_id"], name: "index_citations_on_citing_id_and_cited_id", unique: true
   add_index "citations", ["citing_id"], name: "index_citations_on_citing_id"
 
+  create_table "edits", force: true do |t|
+    t.integer  "author_id"
+    t.integer  "article_id"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  add_index "edits", ["article_id"], name: "index_edits_on_article_id"
+  add_index "edits", ["author_id", "article_id"], name: "index_edits_on_author_id_and_article_id", unique: true
+  add_index "edits", ["author_id"], name: "index_edits_on_author_id"
+
   create_table "journals", force: true do |t|
     t.string   "name"
     t.datetime "created_at"
@@ -54,19 +68,6 @@ ActiveRecord::Schema.define(version: 20141103222200) do
   end
 
   add_index "publications", ["journal_id"], name: "index_publications_on_journal_id"
-
-  create_table "published_articles", force: true do |t|
-    t.integer  "author_id"
-    t.integer  "article_id"
-    t.datetime "created_at"
-    t.datetime "updated_at"
-    t.integer  "publication_id"
-  end
-
-  add_index "published_articles", ["article_id"], name: "index_published_articles_on_article_id"
-  add_index "published_articles", ["author_id", "article_id"], name: "index_published_articles_on_author_id_and_article_id", unique: true
-  add_index "published_articles", ["author_id"], name: "index_published_articles_on_author_id"
-  add_index "published_articles", ["publication_id"], name: "index_published_articles_on_publication_id"
 
   create_table "sections", force: true do |t|
     t.string   "heading"

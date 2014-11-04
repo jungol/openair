@@ -1,5 +1,16 @@
 FactoryGirl.define  do
   
+  factory :journal do
+  	sequence(:name) { |n| "Name #{n}"}
+  end
+
+  factory :publication do
+  	sequence(:year) { |n| "Year #{n}" }
+  	sequence(:issue) { |n| "Issue #{n}" }
+  	sequence(:volume) { |n| "Volume #{n}" }
+    journal
+  end
+  
   factory :section do
     sequence(:heading) { |n| "Heading #{n}" }
     sequence(:content) { |n| "Lorum Ipsum"*10}
@@ -9,6 +20,7 @@ FactoryGirl.define  do
   factory :article do
     sequence(:title)    { |n| "Title #{n}"    }
     sequence(:abstract) { |n| "Abstract #{n}"}
+    publication
   
     factory :article_with_sections do
       transient do
@@ -25,13 +37,5 @@ FactoryGirl.define  do
   	sequence(:last_name)  { |n| "Last_Name #{n}"  }
   end
 
-  factory :publication do
-  	sequence(:year) { |n| "Year #{n}" }
-  	sequence(:issue) { |n| "Issue #{n}" }
-  	sequence(:volume) { |n| "Volume #{n}" }
-  end
 
-  factory :journal do
-  	sequence(:name) { |n| "Name #{n}"}
-  end
 end 
