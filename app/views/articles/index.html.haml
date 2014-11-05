@@ -1,7 +1,5 @@
 - provide(:title, "Dashboard")
-%h2= link_to "Cite All", cite_all_articles_path
-%ul#articles
-  - @articles.each do |article|
-    %li= link_to article.title, article_path(article)
-
-
+.row
+  .col-xs-4= render partial: 'shared/dashboard_item', collection: @articles
+  .col-xs-8
+    %h2= link_to "Cite All", cite_all_articles_path
