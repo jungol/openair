@@ -3,6 +3,10 @@ class ArticlesController < ApplicationController
   	@articles = Article.all
   end
 
+  def new
+    #FOR DESIGN PROTOTYPING
+  end
+
   def show
     @article = Article.find_by_id(params[:id])
   end
