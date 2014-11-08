@@ -1,3 +1,4 @@
+@import "bootstrap-sprockets";
 @import "bootstrap";
 
 $light-gray: #777;
@@ -22,7 +23,7 @@ body {
 
 .side-nav {
 	position: fixed;
-	top: 55px;
+	top: 52px;
 	left: 425px;
 	margin-left: -425px;
 	width: 425px;
