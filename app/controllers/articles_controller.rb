@@ -3,8 +3,25 @@ class ArticlesController < ApplicationController
   	@articles = Article.all
   end
 
-  def new
+  def design
     #FOR DESIGN PROTOTYPING
+  end
+  def article1
+    @article1 = "pushdown"
+  end
+  def article2
+    @article2 = "pushdown"
+  end
+  def article3
+    @article3 = "pushdown"
+  end
+  def article4
+    @article4 = "pushdown"
+  end
+  def article5
+    @article5 = "pushdown"
+  end
+  def citearticles
   end
 
   def show

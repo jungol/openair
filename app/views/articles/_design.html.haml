@@ -1,0 +1,79 @@
+#nav-wrapper
+  %nav.navbar.navbar-fixed-top
+    .container-fluid
+      / .glyphicon.glyphicon-send.pull-left
+      .pull-left=link_to "openair", '#', id: "logo"
+      .div
+        %button.pull-right.btn.btn-default.navbar-btn{ type:"button" }
+          %a{href:"/citearticles", color: "white"} Cite All Papers
+
+      .collapse.navbar-collapse
+        %form.navbar-form.form-horizontal.navbar-left{role:"search"}
+          .form-group
+            %input.form-control{type:"text", placeholder:"Search the stacks"}
+  .container-fluid
+    %div.collapse.navbar-collapse.navbar-ex1-collapse
+      %ul.nav.navbar-nav.side-nav.author
+        %li
+          %a{class:"#{@article1}", href:"/article1"}
+            The Epistemology of System-Building in Adam Smith's <i>The Wealth of Nations</i>
+            %p
+              E. Barhydt
+        %li
+          %a.nav-button{class:"#{@article2}", href:"/article2"}
+            Adam Smith's Four Invisible Hands
+            %p
+              S. Ahmed
+        %li
+          %a.nav-button{class:"#{@article3}", href:"/article3"}
+            Adam Smith and Albert Einstein: The Aesthetic Principle of Truth
+            %p
+              L. Khalil
+        %li
+          %a.nav-button{class:"#{@article4}", href:"/article4"}
+            The Invisible Hand of Jupiter
+            %p
+              A. Macfie
+        %li
+          %a.nav-button{class:"#{@article5}", href:"/article5"}
+            <i>Adam Smith: An Enlightened Life</i>
+            %p
+              N. Phillipson
+        #add.glyphicon.glyphicon-plus-sign
+          Save your papers to the OpenAir dropbox and they'll <a href="http://www.urbandictionary.com/define.php?term=automagically">automagically</a> appear right here.
+
+        
+        / %li
+        /   %a{href:"#"}
+        /     The Epistemology of System-Building in Adam Smith's <i>The Wealth of Nations</i>
+
+        / %li
+        /   %a{href:"#"}
+        /     Adam Smith and Albert Einstein: The Aesthetic Principle of Truth  
+        / %li
+        /   %a{href:"#"}
+        /     A System of Social Science: Papers Relating to Adam Smith 
+        / %li
+        /   %a{href:"#"}
+        /     <i>Adam Smith: An Enlightened Life</i>        %li
+          
+        /   %a{href:"#"}
+        /     <i>An Inquiry into the Nature and Causes of the Wealth of Nations</i>
+        / %li
+        /   %a{href:"#"}
+        /     Essays on Philosophical Subjects
+        / %li
+        /   %a{href:"#"}
+        /     Adam Smith and the Invisible Hand
+        / %li
+        /   %a{href:"#"}
+        /     This is an element
+        / %li
+        /   %a{href:"#"}
+        /     This is another element  
+
+
+
+
+
+          

@@ -63,6 +63,20 @@ body {
 	text-indent: -22px;
 }
 
+#add {
+	color: $light-gray;
+	font-size: .95em;
+	word-spacing: -10px;
+	width: 350px;
+	margin-left: 50px;
+	margin-top: 100px;
+}
+
+.pushdown {
+	box-shadow: inset 0px 0px 5px #909090;
+}
+
+
 // NAVIGATION
 
 #nav-wrapper {
@@ -72,7 +86,7 @@ body {
 }
 
 .btn {
-	background-color: #ff5a5f;
+	background-color: white;
 	color: white;
 	font-size: 1em;
 	font-family: Circular;
