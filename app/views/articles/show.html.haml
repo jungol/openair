@@ -1,33 +1,30 @@
 - provide(:title, "Read Article")
 %h1= @article.title
-%h2= link_to "Cite", cite_article_path(@article)
-%li.author
-  AUTHORS
+.author
   - @article.authors.each do |author|
     = author.first_name
     = author.last_name
-
-#contents
-  Table of Contents
-  -@article.sections.each do |section|
-    %li.section_heading
-      = link_to "#{section.heading}", anchor: "#{section.heading}"
-
-%ul
-  %li#abstract= "ABSTRACT: #{@article.abstract}"
-  %li.section
+.source
+  = @article.publication.journal.name
+  = link_to "Cite this paper", cite_article_path(@article)
+#table_of_contents
+  Contents
+  %ul
     - @article.sections.each do |section|
-      CONTENT
-      %a{ id: "#{section.heading}"}
-      = section.heading
-      = section.content
-  %li.cited_articles
-    - @article.cited_articles.each do |citation|
-      CITED ARTICLE
-      = citation.title
-  %li.citing_articles
-    - @article.citing_articles.each do |citing|
-      CITED BY
-      = citing.title
-
-
+      %li= link_to "#{section.heading}", '#'
+#content
+  -@article.sections.each do |section|
+    .section
+      %h3= section.heading
+      %p= section.content
+.references
+  #citation
+    %h3 
+      Cite this paper
+      = link_to "Click here", cite_article_path(@article)
+  #bibliography
+    %h3 Bibliography
+    %ul
+      %li
+        - @article.cited_articles.each do |citation|
+          =link_to citation.build_citation, "#"

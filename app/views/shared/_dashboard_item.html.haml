@@ -1,5 +1,8 @@
-
-%li= link_to dashboard_item.title, article_path(dashboard_item)
-
-
+%li
+  %a{href: article_path(dashboard_item)}
+    .title
+      =dashboard_item.title
+    .author
+      -dashboard_item.authors.each do |author|
+        ="#{author.first_name} #{author.last_name}"
 
