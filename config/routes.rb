@@ -1,5 +1,9 @@
 Rails.application.routes.draw do
   
+  get 'citations/show'
+
+  get 'citations/index'
+
   root 'articles#design'
 
   resources :articles do

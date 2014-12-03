@@ -17,7 +17,7 @@ class ArticlesController < ApplicationController
 
   def cite
   	article = Article.find_by_id(params[:id])
-    @citation = article.build_citation
+    @citation = Citation.build_citation(article)
   end
 
   def cite_all

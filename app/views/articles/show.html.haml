@@ -27,4 +27,4 @@
     %ul
       %li
         - @article.cited_articles.each do |citation|
-          =link_to citation.build_citation, "#"
+          =link_to Citation.build_citation(citation), "#"

@@ -4,13 +4,13 @@ RSpec.describe "Article feature:", :type => :feature do
   
   before(:all) { 10.times { FactoryGirl.create(:article) } }
   after(:all)  { Article.delete_all }
-  before(:each) { visit root_path }
+  before(:each) { visit articles_path }
 
   context "-- Dashboard --" do 
 	  it "lists every article" do
-			visit root_path
+			visit articles_path
 			Article.all.each do |article|
-				expect(page).to have_selector('li', text: article.title)
+				expect(page).to have_selector('a', text: article.title)
 				expect(page).to have_link(article.title)
 			end
 		end
@@ -20,21 +20,13 @@ RSpec.describe "Article feature:", :type => :feature do
   	end
   end
 
-  context "-- Dashboard Citations --" do
-    specify "cite all button works" do
-      click_link "Cite All"
-			Article.all.each do |article| 
-				expect(page).to have_selector('li', article.build_citation)
-			end
-		end
-  end
 
   context "-- Article Citations --" do
   	specify "cite me button works" do
   		article = Article.all.sample
   		visit article_path(article)
-  		click_link "Cite"
-  		expect(page).to have_content(article.build_citation)
+  		click_link "Cite this paper"
+  		expect(page).to have_content(Citation.build_citation(article))
   	end
   end
 
@@ -44,7 +36,7 @@ RSpec.describe "Article feature:", :type => :feature do
 		  article = Article.all.sample
 		  visit article_path(article)
 			expect(page).to have_content(article.title)
-			expect(page).to have_content(article.abstract)
+			# expect(page).to have_content(article.abstract)
 			article.authors.each do |author|
 				expect(page).to have_content(author.first_name)
 				expect(page).to have_content(author.last_name)
@@ -58,7 +50,7 @@ RSpec.describe "Article feature:", :type => :feature do
 		it "displays table of contents" do
 			article = Article.all.sample
 		  visit article_path(article)
-			expect(page).to have_content("Table of Contents")
+			expect(page).to have_content("Contents")
 			article.sections.each do |section|
     		expect(page).to have_link("#{section.heading}")
     		pending "TODO - Not matching, but does match on localhost:3000" do

@@ -16,7 +16,7 @@ RSpec.describe Article, :type => :model do
     expect(article).to respond_to(:cited_articles)
     expect(article).to respond_to(:edits)
     expect(article).to respond_to(:cite!)
-    expect(article).to respond_to(:citing?)
+    # expect(article).to respond_to(:citing?)
     expect(article).to respond_to(:citing_articles)
     expect(article).to respond_to(:reverse_citations)
     expect(article).to respond_to(:publication)
@@ -50,9 +50,9 @@ RSpec.describe Article, :type => :model do
     publication = FactoryGirl.create(:publication, volume: 35, issue: 2, year: 1927)
     publication.articles << article
     publication.journal.name = "Journal of Political Economy"
-    expect(article.build_citation).to eq("Viner, J. (1927). Adam Smith and Laissez Faire. Journal of Political Economy, 35(2), pp. 437-456.")
+    expect(Citation.build_citation(article)).to eq("Viner, J. (1927). Adam Smith and Laissez Faire. Journal of Political Economy, 35(2), pp. 437-456.")
     article.authors << FactoryGirl.create(:author, first_name: "Ethan", last_name: "Barhydt")
-    expect(article.build_citation).to eq("Viner, J., & Barhydt, E. (1927). Adam Smith and Laissez Faire. Journal of Political Economy, 35(2), pp. 437-456.")
+    expect(Citation.build_citation(article)).to eq("Viner, J., & Barhydt, E. (1927). Adam Smith and Laissez Faire. Journal of Political Economy, 35(2), pp. 437-456.")
   end
 end
 
