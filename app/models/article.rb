@@ -15,8 +15,12 @@ class Article < ActiveRecord::Base
   validates :title, presence: true #uniqueness: true
   validates :publication_id, presence: true
 
+  def cite_me
+    Citation.build_citation(self)
+  end
+
   def cite!(article)
-  	citations.create!(cited_id: article.id)
+    citations.create!(cited_id: article.id)
   end
   
 end

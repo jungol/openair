@@ -1,15 +1,14 @@
 Rails.application.routes.draw do
-  
-  get 'citations/show'
-
-  get 'citations/index'
 
   root 'articles#design'
 
   resources :articles do
+    resources :citations, only: [:index]
     get :cite, :on => :member
-    get :cite_all, :on => :collection
+    # get :cite_all, :on => :collection
   end
+
+  resources :citations, only: [:show]
   
   match 'design', to: 'articles#design', via: 'get'
 
