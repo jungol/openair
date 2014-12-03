@@ -1,3 +1,15 @@
+# == Schema Information
+#
+# Table name: articles
+#
+#  id             :integer          not null, primary key
+#  title          :string(255)
+#  created_at     :datetime
+#  updated_at     :datetime
+#  abstract       :text
+#  publication_id :integer
+#
+
 require 'rails_helper'
 
 RSpec.describe Article, :type => :model do

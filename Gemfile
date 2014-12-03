@@ -17,6 +17,7 @@ gem 'sprockets'
 group :development do
   gem 'guard-spork'
   gem 'guard-rspec', require: false
+  gem 'annotate'
 
 end
 

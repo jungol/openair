@@ -1,3 +1,14 @@
+# == Schema Information
+#
+# Table name: citations
+#
+#  id         :integer          not null, primary key
+#  citing_id  :integer
+#  cited_id   :integer
+#  created_at :datetime
+#  updated_at :datetime
+#
+
 class Citation < ActiveRecord::Base
 
   #ASSOCIATIONS
