@@ -1,15 +1,3 @@
-# == Schema Information
-#
-# Table name: articles
-#
-#  id             :integer          not null, primary key
-#  title          :string(255)
-#  created_at     :datetime
-#  updated_at     :datetime
-#  abstract       :text
-#  publication_id :integer
-#
-
 require 'rails_helper'
 
 RSpec.describe Article, :type => :model do
@@ -56,16 +44,7 @@ RSpec.describe Article, :type => :model do
     expect(article.citing_articles).to include(other_article)
   end
   
-  it "builds a well-formatted citation of itself with single or multiple authors" do
-    article.title = "Adam Smith and Laissez Faire"
-    article.authors << FactoryGirl.create(:author, first_name: "Jacob", last_name: "Viner")
-    publication = FactoryGirl.create(:publication, volume: 35, issue: 2, year: 1927)
-    publication.articles << article
-    publication.journal.name = "Journal of Political Economy"
-    expect(Citation.build_citation(article)).to eq("Viner, J. (1927). Adam Smith and Laissez Faire. Journal of Political Economy, 35(2), pp. 437-456.")
-    article.authors << FactoryGirl.create(:author, first_name: "Ethan", last_name: "Barhydt")
-    expect(Citation.build_citation(article)).to eq("Viner, J., & Barhydt, E. (1927). Adam Smith and Laissez Faire. Journal of Political Economy, 35(2), pp. 437-456.")
-  end
+  
 end
 
 

@@ -4,8 +4,7 @@ Rails.application.routes.draw do
 
   resources :articles do
     resources :citations, only: [:index]
-    get :cite, :on => :member
-    # get :cite_all, :on => :collection
+    get :cite, :on => :member, to: 'citations#show', via: 'get'
   end
 
   resources :citations, only: [:show]

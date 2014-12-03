@@ -34,6 +34,14 @@ class Article < ActiveRecord::Base
   def cite!(article)
     citations.create!(cited_id: article.id)
   end
-  
+
+  def bibliography
+    @bibliography = []
+    cited_articles.each do |article|
+      @bibliography << Citation.build_citation(article)
+    end
+    return @bibliography
+  end
 end
+
 

@@ -26,5 +26,5 @@
     %h3 Bibliography
     %ul
       %li
-        - @article.cited_articles.each do |citation|
-          =link_to Citation.build_citation(citation), "#"
+        - @article.bibliography.each do |citation|
+          =citation
