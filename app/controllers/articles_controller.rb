@@ -20,9 +20,9 @@ class ArticlesController < ApplicationController
     @citation = Citation.build_citation(article)
   end
 
-  def cite_all
-    articles = Article.all
-    @citations = []
-    articles.each { |article| @citations << article.build_citation }
-  end
+  # def cite_all
+  #   articles = Article.all
+  #   @citations = []
+  #   articles.each { |article| @citations << article.build_citation }
+  # end
 end

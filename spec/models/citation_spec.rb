@@ -37,4 +37,23 @@ RSpec.describe Citation, :type => :model do
     expect(citation).not_to be_valid
   end
   
+  context "build_citation method" do
+    before(:all) do 
+      @article = FactoryGirl.create(:article)
+      @article.title = "Adam Smith and Laissez Faire"
+      @article.authors << FactoryGirl.create(:author, first_name: "Jacob", last_name: "Viner")
+      publication = FactoryGirl.create(:publication, volume: 35, issue: 2, year: 1927)
+      publication.articles << @article
+      publication.journal.name = "Journal of Political Economy"
+    end
+    it "works with 1 author" do
+      expect(Citation.build_citation(@article)).to eq("Viner, J. (1927). Adam Smith and Laissez Faire. Journal of Political Economy, 35(2), pp. 437-456.")
+    end
+
+    it "works with multiple authors" do
+      @article.authors << FactoryGirl.create(:author, first_name: "Ethan", last_name: "Barhydt")
+      expect(Citation.build_citation(@article)).to eq("Viner, J., & Barhydt, E. (1927). Adam Smith and Laissez Faire. Journal of Political Economy, 35(2), pp. 437-456.")
+    end
+  end
 end
+

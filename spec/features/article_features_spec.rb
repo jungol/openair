@@ -21,16 +21,7 @@ RSpec.describe "Article feature:", :type => :feature do
   end
 
 
-  context "-- Article Citations --" do
-  	specify "cite me button works" do
-  		article = Article.all.sample
-  		visit article_path(article)
-  		click_link "Cite this paper"
-  		expect(page).to have_content(Citation.build_citation(article))
-  	end
-  end
-
-	context "-- Article Display --" do
+  context "-- Article Display --" do
 
 		it "displays content" do
 		  article = Article.all.sample
@@ -52,13 +43,13 @@ RSpec.describe "Article feature:", :type => :feature do
 		  visit article_path(article)
 			expect(page).to have_content("Contents")
 			article.sections.each do |section|
-    		expect(page).to have_link("#{section.heading}")
-    		pending "TODO - Not matching, but does match on localhost:3000" do
-    			uri = URI.parse(current_url)
-    			expect(uri.path).to eq("#{article_path(article)}##{section.heading}")
-    	  end
-    	end
-    end
+			  expect(page).to have_link("#{section.heading}")
+			  pending "TODO - Not matching, but does match on localhost:3000" do
+				  uri = URI.parse(current_url)
+				  expect(uri.path).to eq("#{article_path(article)}##{section.heading}")
+		    end
+		  end
+		end
   end
 end
 
