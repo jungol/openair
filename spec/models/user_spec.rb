@@ -39,6 +39,11 @@ RSpec.describe User, :type => :model do
   		user.email = nil
   		expect(user).not_to be_valid
   	end
+
+  	specify "password" do
+  		@user = User.new(email: "example@example.com")
+  		expect(@user).not_to be_valid
+  	end
   end
 
 end

@@ -4,7 +4,7 @@ ruby '2.0.0'
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
 gem 'shoulda-matchers', require: false
-gem 'minitest'
+gem 'minitest-rails'
 gem 'haml'
 gem 'faker'
 gem 'sass-rails', '~> 4.0.3' # Use SCSS for stylesheets
