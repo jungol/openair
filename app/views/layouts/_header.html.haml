@@ -3,7 +3,10 @@
     .container-fluid
       / .glyphicon.glyphicon-send.pull-left
       .pull-left=link_to "openair", '#', id: "logo"
-      = link_to "Sign out", destroy_user_session_path, method: :delete
+      - if user_signed_in?
+        = link_to "sign out", destroy_user_session_path, method: :delete
+      - else 
+        = link_to "sign in", new_user_session_path
       .div
         %button.pull-right.btn.btn-default.navbar-btn{ type:"button" }
           %a{href:"/citearticles", color: "white"} Cite All Papers
@@ -15,3 +18,4 @@
         /     %input.form-control{type:"text", placeholder:"Search the stacks"}
 
       
+
