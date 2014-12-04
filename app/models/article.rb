@@ -22,7 +22,9 @@ class Article < ActiveRecord::Base
   has_many :reverse_citations, foreign_key: "cited_id",
                                class_name: "Citation"
   has_many :citing_articles, through: :reverse_citations, source: :citing
-	
+	has_many :copies
+  has_many :users, :through => :copies
+
   #VALIDATIONS
   validates :title, presence: true #uniqueness: true
   validates :publication_id, presence: true

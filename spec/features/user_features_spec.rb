@@ -25,11 +25,16 @@ RSpec.describe "User feature:", :type => :feature do
    	end
 
     context "Home page" do
-
+      before do
+        @article = FactoryGirl.create(:article)
+        @user.copies.create!(article_id: @article.id)
+        visit root_path
+      end
       it "displays user's articles on the shelf" do
         @user.articles.each do |article|
-          expect(page).to have_selector('a', article.title)
+          expect(page).to have_selector('a', text: article.title)
         end
+
       end
 
       it "doesn't display other users' articles" do

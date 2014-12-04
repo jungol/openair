@@ -1,12 +1,15 @@
 Rails.application.routes.draw do
 
+
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
-  root 'articles#design'
+  resources :users, only: [:show]
+  root 'users#show'
 
   resources :articles do
     resources :citations, only: [:index]
     get :cite, :on => :member, to: 'citations#show', via: 'get'
   end
+
 
   resources :citations, only: [:show]
   

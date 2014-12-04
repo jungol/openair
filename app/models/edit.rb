@@ -11,8 +11,8 @@
 
 class Edit < ActiveRecord::Base
   #ASSOCIATIONS  
-  belongs_to :author, class_name: "Author"
-  belongs_to :article, class_name: "Article"
+  belongs_to :author
+  belongs_to :article
 
   #VALIDATIONS
   validates :author_id, presence: true
