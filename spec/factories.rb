@@ -37,5 +37,8 @@ FactoryGirl.define  do
   	sequence(:last_name)  { |n| "Last_Name #{n}"  }
   end
 
-
+  factory :user do
+    sequence(:email) { |n| "Email_#{n}@Example.com"}
+    sequence(:password) { |n| "Password_#{n}"}
+  end
 end 

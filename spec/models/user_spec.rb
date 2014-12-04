@@ -22,5 +22,23 @@
 require 'rails_helper'
 
 RSpec.describe User, :type => :model do
-  pending "add some examples to (or delete) #{__FILE__}"
+
+  let(:user) { FactoryGirl.create(:user) }
+  subject { user }
+
+  it "responds to valid methods" do
+  	expect(user).to respond_to(:email)
+		expect(user).to respond_to(:encrypted_password)
+  	expect(user).to respond_to(:current_sign_in_at)
+  	expect(user).to respond_to(:provider)
+	  expect(user).to respond_to(:uid)
+  end
+
+  context "requires" do
+  	specify "email" do
+  		user.email = nil
+  		expect(user).not_to be_valid
+  	end
+  end
+
 end
