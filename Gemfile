@@ -12,7 +12,10 @@ gem 'coffee-rails', '~> 4.0.0' # Use CoffeeScript for .js.coffee assets and view
 gem 'uglifier', '>= 1.3.0' # Use Uglifier as compressor for JavaScript assets
 gem 'bootstrap-sass'
 gem 'sprockets'
-
+gem 'therubyracer', platforms: :ruby
+gem 'devise'
+gem 'omniauth'
+gem 'omniauth-facebook'
 
 group :development do
   gem 'guard-spork'
