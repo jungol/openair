@@ -8,8 +8,15 @@ module FeatureHelpers
 		login_as(user, :scope => :user)
 		user
 	end
+
+	def sign_in_process(user)
+
+	end
+
 end
+
 
 RSpec.configure do |config|
   config.include FeatureHelpers, type: :feature
 end
+

@@ -13,7 +13,7 @@ RSpec.describe StaticPagesController, :type => :controller do
 			article = create(:article)
 			@user.articles << article
 			get :home
-			expect(assigns(:articles)).to include(article)
+			expect(assigns(:articles)).to match_array([article])
 		end
 
 		it "renders the :home template" do
