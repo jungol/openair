@@ -14,31 +14,23 @@ require 'rails_helper'
 RSpec.describe Author, :type => :model do
 
 	let(:author) { Author.new }
+  subject { author }
 
-  it "responds to valid methods" do	  
-	  expect(author).to respond_to(:first_name)
-	  expect(author).to respond_to(:last_name)
-	  expect(author).to respond_to(:articles)
-	  expect(author).to respond_to(:edits)
-  end
+  it { should respond_to(:first_name) }
+  it { should respond_to(:last_name) }
+  it { should respond_to(:articles) }
+  it { should respond_to(:edits) }
+
+  it { should validate_presence_of(:first_name)}
+  it { should validate_presence_of(:last_name)}
 
   it "is valid with first_name, last_name" do
-    expect(build(:author)).to be_valid
-  end
-  
-  it "is invalid without first name" do
-    author.first_name = nil
-    author.valid?
-    expect(author.errors[:first_name]).to include("can't be blank")
+    author.first_name = "Adam"
+    author.last_name = "Smith"
+    expect(author).to be_valid
   end
 
-  it "is invalid without last name" do
-    author.last_name = nil
-    author.valid?
-    expect(author.errors[:last_name]).to include("can't be blank")
-  end
-
-  describe "name validation" do
+  describe "validation of :name" do
     let(:author) { build(:author) }
     
     context "with uncapitalized first or last name" do
@@ -57,5 +49,8 @@ RSpec.describe Author, :type => :model do
       end
     end
   end
+
+  it { should have_many(:edits)}
+  it { should have_many(:articles)}
 	
 end

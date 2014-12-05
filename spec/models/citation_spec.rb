@@ -14,29 +14,22 @@ require 'rails_helper'
 RSpec.describe Citation, :type => :model do
 
   let(:citation) { Citation.new(citing_id: 1, cited_id: 2) }
+  subject { citation }
 
-  it "responds to valid methods" do
-  	expect(citation).to respond_to(:citing)
-  	expect(citation).to respond_to(:cited)
-  end
+  it { should respond_to(:citing) }
+  it { should respond_to(:citing_id)}
+  it { should respond_to(:cited) }
+  it { should respond_to(:cited_id)}
+
+  it { should validate_presence_of(:citing_id)}
+  it { should validate_presence_of(:cited_id)}
 
   it "is valid with citing_id, cited_id" do
     expect(citation).to be_valid
   end
 
-  it "is invalid without a citing_id" do
-  	citation.citing_id = nil
-    citation.valid?
-  	expect(citation.errors[:citing_id]).to include("can't be blank")
-  end
-
-  it "is invalid without a cited_id" do
-    citation.cited_id = nil
-    citation.valid?
-    expect(citation.errors[:cited_id]).to include("can't be blank")
-  end
-
-
+  it { should belong_to(:citing) }
+  it { should belong_to(:cited) }
 
   context "build_citation method" do
     before(:all) do 

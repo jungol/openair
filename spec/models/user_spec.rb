@@ -24,29 +24,25 @@ require 'rails_helper'
 RSpec.describe User, :type => :model do
 
   let(:user) { User.new }
+  subject { user }
 
-  it "responds to valid methods" do
-  	expect(user).to respond_to(:email)
-		expect(user).to respond_to(:encrypted_password)
-  	expect(user).to respond_to(:current_sign_in_at)
-  	expect(user).to respond_to(:provider)
-	  expect(user).to respond_to(:uid)
-  end
+  it { should respond_to(:email) }
+  it { should respond_to(:encrypted_password) }
+  it { should respond_to(:password) }
+  it { should respond_to(:provider) }
+  it { should respond_to(:uid) }
+
 
   it "is valid with email, password" do
-    expect(build(:user)).to be_valid
+    user.email = "adamsmith@gmail.com"
+    user.password = "stealthofnations"
+    expect(user).to be_valid
   end
 
-  it "is invalid without email" do
-    user.email = nil
-    user.valid?
-    expect(user.errors[:email]).to include("can't be blank")
-  end
-  
-  it "is invalid without password" do
-    user.email = nil
-    user.valid?
-    expect(user.errors[:password]).to include("can't be blank")
-  end
+  it { should validate_presence_of(:email)}
+  it { should validate_presence_of(:password)}
+
+  it { should have_many(:copies)}
+  it { should have_many(:articles)}
 
 end

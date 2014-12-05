@@ -14,26 +14,19 @@ require 'rails_helper'
 
 RSpec.describe Section, :type => :model do
   let(:section) { Section.new }
-  
-  it "responds to valid methods" do
-    expect(section).to respond_to(:article)
-    expect(section).to respond_to(:content)
-  end
+  subject { section }
+
+  it { should respond_to(:heading) }
+  it { should respond_to(:content) }
+  it { should respond_to(:article_id) }
 
   it "is valid with heading, article_id" do
   	expect(build(:section)).to be_valid
   end
 
-  it "is invalid without heading" do
-  	section.heading = nil
-  	section.valid?
-  	expect(section.errors[:heading]).to include("can't be blank")
-  end
+  it { should validate_presence_of(:heading) }
+  it { should validate_presence_of(:article_id) }
 
-  it "is invalid without article_id" do
-  	section.article_id = nil
-  	section.valid?
-  	expect(section.errors[:article_id]).to include("can't be blank")
-  end
+  it { should belong_to(:article) }
 
 end

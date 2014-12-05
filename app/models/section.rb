@@ -16,7 +16,6 @@ class Section < ActiveRecord::Base
 	belongs_to :article
 
 	#CALLBACKS
-	before_save {self.heading = heading.humanize}
 
 	#VALIDATIONS
 	validates :article_id, presence: true

@@ -14,26 +14,19 @@ require 'rails_helper'
 RSpec.describe Edit, :type => :model do
 
 	let(:edit) { Edit.new(author_id: 1, article_id: 1) }
+	subject { edit }
 
-	it "responds to valid methods" do
-		expect(edit).to respond_to(:author_id)
-		expect(edit).to respond_to(:article_id)
-	end
+	it { should respond_to(:author_id)}
+	it { should respond_to(:article_id)}
 
 	it "is valid with article_id, user_id" do
 		expect(edit).to be_valid
 	end
 
-	it "is invalid without article_id" do
-		edit.article_id = nil
-		edit.valid?
-		expect(edit.errors[:article_id]).to include("can't be blank")
-	end
+	it { should validate_presence_of(:article_id)}
+	it { should validate_presence_of(:author_id)}
 
-	it "is invalid without author_id" do
-		edit.author_id = nil
-		edit.valid?
-		expect(edit.errors[:author_id]).to include("can't be blank")
-	end
+	it { should belong_to(:article)}
+	it { should belong_to(:author)}
 
 end
