@@ -13,30 +13,31 @@ require 'rails_helper'
 
 RSpec.describe Citation, :type => :model do
 
-  let(:article) { FactoryGirl.create(:article) }
-  let(:other_article)  { FactoryGirl.create(:article)}
-  let(:citation) { article.citations.build(cited_id: other_article.id)}
+  let(:citation) { Citation.new(citing_id: 1, cited_id: 2) }
 
-  subject { citation }
-  
   it "responds to valid methods" do
   	expect(citation).to respond_to(:citing)
   	expect(citation).to respond_to(:cited)
-  	expect(citation.citing).to eq(article)
-  	expect(citation.cited).to eq(other_article)
-  	expect(citation).to be_valid 
-  end
-  
-  it "is invalid without a citing article" do
-  	citation.citing = nil
-  	expect(citation).not_to be_valid
   end
 
-  it "is invalid without a cited article" do
-    citation.cited = nil
-    expect(citation).not_to be_valid
+  it "is valid with citing_id, cited_id" do
+    expect(citation).to be_valid
   end
-  
+
+  it "is invalid without a citing_id" do
+  	citation.citing_id = nil
+    citation.valid?
+  	expect(citation.errors[:citing_id]).to include("can't be blank")
+  end
+
+  it "is invalid without a cited_id" do
+    citation.cited_id = nil
+    citation.valid?
+    expect(citation.errors[:cited_id]).to include("can't be blank")
+  end
+
+
+
   context "build_citation method" do
     before(:all) do 
       @article = FactoryGirl.create(:article)

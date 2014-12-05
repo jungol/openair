@@ -23,8 +23,7 @@ require 'rails_helper'
 
 RSpec.describe User, :type => :model do
 
-  let(:user) { FactoryGirl.create(:user) }
-  subject { user }
+  let(:user) { User.new }
 
   it "responds to valid methods" do
   	expect(user).to respond_to(:email)
@@ -34,16 +33,20 @@ RSpec.describe User, :type => :model do
 	  expect(user).to respond_to(:uid)
   end
 
-  context "requires" do
-  	specify "email" do
-  		user.email = nil
-  		expect(user).not_to be_valid
-  	end
+  it "is valid with email, password" do
+    expect(build(:user)).to be_valid
+  end
 
-  	specify "password" do
-  		@user = User.new(email: "example@example.com")
-  		expect(@user).not_to be_valid
-  	end
+  it "is invalid without email" do
+    user.email = nil
+    user.valid?
+    expect(user.errors[:email]).to include("can't be blank")
+  end
+  
+  it "is invalid without password" do
+    user.email = nil
+    user.valid?
+    expect(user.errors[:password]).to include("can't be blank")
   end
 
 end

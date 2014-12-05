@@ -26,8 +26,7 @@ class Article < ActiveRecord::Base
   has_many :users, :through => :copies
 
   #VALIDATIONS
-  validates :title, presence: true #uniqueness: true
-  validates :publication_id, presence: true
+  validates :title, presence: true
 
   def cite_me
     Citation.build_citation(self)

@@ -20,5 +20,6 @@ class Section < ActiveRecord::Base
 
 	#VALIDATIONS
 	validates :article_id, presence: true
+	validates :heading, presence: true
 
 end

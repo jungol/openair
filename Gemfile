@@ -27,13 +27,15 @@ end
 group :development, :test do 
   gem 'sqlite3'
   gem 'rspec-rails', '~> 3.1.0'
+  gem 'factory_girl_rails'
+
 end
 
 group :test do
   gem 'selenium-webdriver'
   gem 'capybara', '~> 2.3.0'
   gem 'spork-rails', '~> 4.0.0'
-  gem 'factory_girl_rails'
+  gem 'launchy'
 end
 
 group :production do
