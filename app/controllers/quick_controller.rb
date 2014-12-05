@@ -1,0 +1,2 @@
+class QuickController < ApplicationController
+end
