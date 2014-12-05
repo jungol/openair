@@ -9,10 +9,6 @@ module FeatureHelpers
 		user
 	end
 
-	def sign_in_process(user)
-
-	end
-
 end
 
 
