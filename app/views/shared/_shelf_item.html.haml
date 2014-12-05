@@ -1,0 +1,8 @@
+%li
+  %a{href: article_path(shelf_item)}
+    .title
+      =shelf_item.title
+    .author
+      -shelf_item.authors.each do |author|
+        ="#{author.first_name} #{author.last_name}"
+

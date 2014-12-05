@@ -1,9 +1,7 @@
 Rails.application.routes.draw do
 
-
   devise_for :users, :controllers => { :omniauth_callbacks => "callbacks" }
-  resources :users, only: [:show]
-  root 'users#show'
+  root 'static_pages#home'
 
   resources :articles do
     resources :citations, only: [:index]
