@@ -13,9 +13,7 @@
 require 'rails_helper'
 
 RSpec.describe Article, :type => :model do
-  
-  let(:article) { Article.new }
-  
+    
   let(:article) { Article.new }
   subject { article }
   it { should respond_to(:title) }
