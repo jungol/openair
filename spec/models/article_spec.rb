@@ -16,20 +16,19 @@ RSpec.describe Article, :type => :model do
   
   let(:article) { Article.new }
   
-  it "responds to valid methods" do
-    expect(article).to respond_to(:title) 
-    expect(article).to respond_to(:abstract) 
-    expect(article).to respond_to(:authors) 
-    expect(article).to respond_to(:sections)
-    expect(article).to respond_to(:citations)
-    expect(article).to respond_to(:cited_articles)
-    expect(article).to respond_to(:edits)
-    expect(article).to respond_to(:cite!)
-    # expect(article).to respond_to(:citing?)
-    expect(article).to respond_to(:citing_articles)
-    expect(article).to respond_to(:reverse_citations)
-    expect(article).to respond_to(:publication)
-  end
+  let(:article) { Article.new }
+  subject { article }
+  it { should respond_to(:title) }
+  it { should respond_to(:abstract) }
+  it { should respond_to(:authors) }
+  it { should respond_to(:sections) }
+  it { should respond_to(:citations) }
+  it { should respond_to(:cited_articles) }
+  it { should respond_to(:edits) }
+  it { should respond_to(:cite!) }
+  it { should respond_to(:citing_articles) }
+  it { should respond_to(:reverse_citations) }
+  it { should respond_to(:publication) }
   
   it "is valid with title" do
     expect(build(:article)).to be_valid
