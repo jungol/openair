@@ -1,6 +1,6 @@
 = render 'layouts/shelf'
 
-- provide(:title, "Read Article")
+- provide(:title, @article.title)
 %h1= @article.title
 .author
   -@article.authors.each do |author|

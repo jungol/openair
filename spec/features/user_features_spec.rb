@@ -64,6 +64,16 @@ feature "User feature:", :type => :feature do
 
   scenario "signed in user trying to sign in is redirected to home page" 
 
+  feature "Authorization: " do
+
+    scenario "viewing articles requires sign in" do
+      article = create(:article)
+      visit article_path(article)
+      expect(page).to have_title(full_title('Sign In'))
+      click_link 'Sign In'
+      expect(page).to have_title(full_title(article.title))
+    end
+  end
 end
 
 
