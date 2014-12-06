@@ -2,6 +2,9 @@ require 'rails_helper'
 
 RSpec.describe CitationsController, :type => :controller do
 
+	it { should route(:get, '/articles/1/cite').to(action: :show, id: 1)}
+	it { should route(:get, '/articles/1/citations').to(action: :index, article_id: 1)}
+
 	describe 'GET #show' do
 		before :each do
 			@article = create(:article)

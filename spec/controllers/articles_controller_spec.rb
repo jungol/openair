@@ -2,6 +2,8 @@ require 'rails_helper'
 
 RSpec.describe ArticlesController, :type => :controller do
 
+	it { should route(:get, '/articles/1').to(action: :show, id: 1)}
+
 	describe 'GET #show' do
 		it "assigns the requested article to @article" do
 			article = create(:article)

@@ -8,7 +8,4 @@ Rails.application.routes.draw do
     get :cite, :on => :member, to: 'citations#show', via: 'get'
   end
 
-  match 'design', to: 'articles#design', via: 'get'
-
-
 end
