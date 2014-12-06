@@ -25,6 +25,20 @@ ul {
 	text-transform: uppercase;
 }
 
+.openair-btn{
+    background: #179ac8;
+    text-decoration: none;
+    color: white;
+    &:hover{
+        border-color: #B8B8B8;
+        background: #179ac8;
+        color: white;
+    }
+    &:visited{
+        color: white;
+    }
+}
+
 // ********************
 // NAVBAR -- HORIZONTAL
 // ********************
@@ -36,17 +50,6 @@ ul {
     //     float: left;
     // }
 
-}
-
-.openair-btn{
-    background: #179ac8;
-    text-decoration: none;
-    color: white;
-    &:hover{
-        border-color: #B8B8B8;
-        background: #179ac8;
-        color: white;
-    }
 }
 
 

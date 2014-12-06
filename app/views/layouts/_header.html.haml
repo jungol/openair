@@ -1,7 +1,6 @@
 #nav-wrapper
   %nav.navbar-fixed-top.navbar-default
     .container-fluid
-      / .glyphicon.glyphicon-send.pull-left
       .pull-left= link_to "openair", root_path, id: "logo"
       .navbar-right
         - if user_signed_in?
