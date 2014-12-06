@@ -1,75 +1,72 @@
 namespace :db do
   desc "Fill database with sample data"
   task populate: :environment do
-    make_journals
-    make_publications
-    make_articles
-    make_sections
-    make_authors
-    make_citations
+    make_ivory_tower
   end
 end
 
-def make_journals
-  2.times do
-    Journal.create!(name: "Journal of #{Faker::Company.catch_phrase}")
+# The make_[model] functions do not build up associations, even 
+# if they are required for validation. This allows for flexibility
+# as models and associations change. The make_ivory_tower function 
+# builds up the associations to populate the site. 
+
+def make_ivory_tower
+  5.times do |n| 
+    user = make_user
+    journal = make_journal
+    journal.save!
+    publication = make_publication
+    article = make_article
+    section_array = []
+    3.times { |n| section_array << make_section }
+    author = make_author
+    journal.publications << publication
+    publication.articles << article
+    article.authors << author
+    section_array.each { |section| article.sections << section }
   end
 end
 
-def make_publications
-  journals = Journal.all
-  2.times do
-    issue = Faker::Number.digit
-    year = 2014
-    volume = Faker::Number.digit
-    journals.each { |journal| journal.publications.create!(issue: issue, year: year, volume: volume )}
-  end
+def make_journal
+  Journal.create!(
+    name: "Journal of #{Faker::Company.catch_phrase}"
+  )
 end
 
-def make_articles
-  publications = Publication.all
-  2.times do
-    title = Faker::Lorem.sentence
-    abstract = Faker::Lorem.paragraph
-    publications.each { |publication| publication.articles.create!(title: title, abstract: abstract)}
-  end
+def make_publication
+  Publication.new(
+    issue: Faker::Number.digit, 
+    volume: Faker::Number.digit, 
+    year: 1776, 
+  )
 end
 
-def make_sections
-  articles = Article.all
-  2.times do
-    heading = Faker::Lorem.sentence
-    content = Faker::Lorem.paragraph
-    articles.each { |article| article.sections.create!(heading: heading, content: content)}
-  end
+def make_article
+  Article.new(
+    title: Faker::Lorem.sentence, 
+  )
 end
 
-def make_authors
-  articles = Article.all
-  2.times do
-    first_name = Faker::Name.first_name
-    last_name = Faker::Name.last_name      
-    articles.each { |article| article.authors.create!(first_name: first_name, last_name: last_name)}
-  end
+def make_section
+  Section.new(
+    heading: Faker::Lorem.sentence,
+    content: Faker::Lorem.paragraph(20)
+  )
 end
 
-
-def make_citations
-  articles = Article.all
-  2.times do
-    other_article = articles.all.sample
-    articles.each do |article|
-      article.cite!(other_article) unless article == other_article
-    end
-  end
+def make_author
+  Author.new(
+    first_name: Faker::Name.first_name,
+    last_name: Faker::Name.first_name
+  )
 end
 
-
-
-
-
-
-
+def make_user
+  User.create!(
+    email: Faker::Internet.email,
+    password: Faker::Internet.password
+  )
+end
 
 
 
