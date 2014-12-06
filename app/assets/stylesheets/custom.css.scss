@@ -31,12 +31,24 @@ ul {
 
 .navbar-fixed-top {
 	background: white;
-		border-bottom: 1px solid #ccc;
+	border-bottom: 1px solid #ccc;
+    // li {
+    //     float: left;
+    // }
 
 }
-.btn {
-	font-size: 100%;
+
+.openair-btn{
+    background: #179ac8;
+    text-decoration: none;
+    color: white;
+    &:hover{
+        border-color: #B8B8B8;
+        background: #179ac8;
+        color: white;
+    }
 }
+
 
 // ********************
 //      WRAPPER

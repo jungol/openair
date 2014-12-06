@@ -38,7 +38,7 @@ feature "User feature:", :type => :feature do
     visit root_path
     expect(page).to have_link "Sign Out"
     user.articles.each do |article|
-      expect(page).to have_content(article.title)
+      expect(page).to have_selector('li', text: article.title)
     end
   end
 

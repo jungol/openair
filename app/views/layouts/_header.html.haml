@@ -1,21 +1,27 @@
 #nav-wrapper
-  %nav.navbar.navbar-fixed-top
+  %nav.navbar.navbar-fixed-top.navbar-default
     .container-fluid
       / .glyphicon.glyphicon-send.pull-left
-      .pull-left=link_to "openair", '#', id: "logo"
-      - if user_signed_in?
-        = link_to "Sign Out", destroy_user_session_path, method: :delete
-      - else 
-        = link_to "Sign In (with facebook)", user_omniauth_authorize_path(:facebook)
-      .div
-        %button.pull-right.btn.btn-default.navbar-btn{ type:"button" }
-          %a{href:"/citearticles", color: "white"} Cite All Papers
-          %a{ href: "#menu-toggle" } Toggle Menu
+      .pull-left= link_to "openair", root_path, id: "logo"
+      .navbar-right
+        - if user_signed_in?
+          = link_to "Sign Out", destroy_user_session_path, method: :delete, :class => "openair-btn btn navbar-btn"
+        - else 
+          = link_to "Sign In (Facebook)", user_omniauth_authorize_path(:facebook), :class => "openair-btn btn navbar-btn"
+        = link_to "Toggle Menu", "#menu-toggle", :class => "openair-btn btn navbar-btn"
 
-      .collapse.navbar-collapse
-        / %form.navbar-form.form-horizontal.navbar-left{role:"search"}
-        /   .form-group
-        /     %input.form-control{type:"text", placeholder:"Search the stacks"}
+      / %div
+      /   %button.navbar-right.btn.btn-default.navbar-btn{ type:"button" }
+      /     %a{href:"/citearticles", color: "white"} Cite All Papers
+      /     %a{ href: "#menu-toggle" } Toggle Menu
+      / %div
+      /   %ul
+      /     %li.pull-right
+            
+      / .collapse.navbar-collapse
+      /   / %form.navbar-form.form-horizontal.navbar-left{role:"search"}
+      /   /   .form-group
+      /   /     %input.form-control{type:"text", placeholder:"Search the stacks"}
 
       
 
