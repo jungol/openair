@@ -1,4 +1,7 @@
 class CitationsController < ApplicationController
+  
+  before_action :authenticate_user!
+
   def index
   	article = Article.find(params[:article_id])
   	@citations = article.bibliography

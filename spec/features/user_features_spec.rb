@@ -4,14 +4,14 @@ require 'rails_helper'
 # below. The create_signed_in_user method in utilities.rb already creates 
 #logged in users without having to simulate the fb connection.
 
-OmniAuth.config.test_mode = true
-OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new({
-  :provider => 'facebook',
-  :uid => '1337',
-  :info => {
-    'email' => 'ethan@test.com'
-  }
-})
+# OmniAuth.config.test_mode = true
+# OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new({
+#   :provider => 'facebook',
+#   :uid => '1337',
+#   :info => {
+#     'email' => 'ethan@test.com'
+#   }
+# })
 
 feature "User feature:", :type => :feature do
 
@@ -66,8 +66,10 @@ feature "User feature:", :type => :feature do
 
   feature "Authorization: " do
 
-    scenario "viewing articles requires sign in" do
+    scenario "viewing articles and citations requires sign in" do
       article = create(:article)
+      visit cite_article_path(article)
+      expect(page).to have_title(full_title('Sign In'))
       visit article_path(article)
       expect(page).to have_title(full_title('Sign In'))
       click_link 'Sign in'
