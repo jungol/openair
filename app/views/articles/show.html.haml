@@ -17,7 +17,7 @@
   -@article.sections.each do |section|
     .section
       %h3= section.heading
-      %p= section.content
+      %p=raw section.content
 .references
   #citation
     %h3 
