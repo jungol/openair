@@ -13,6 +13,7 @@ html {
 body { 
 	padding-top: 50px;
 	padding-right: 15px;
+    padding-left: 15px;
     font-family: Serif;
 }
 
@@ -46,9 +47,7 @@ ul {
 .navbar-fixed-top {
 	background: white;
 	border-bottom: 1px solid #ccc;
-    // li {
-    //     float: left;
-    // }
+    padding-right: 15px;
 
 }
 
@@ -133,6 +132,7 @@ ul {
 
 #page-content-wrapper {
     width: 100%;
+    padding-top: 15px;
 }
 
 #wrapper.toggled #page-content-wrapper {
@@ -165,6 +165,9 @@ h1, h2 {
     margin-top: 0px;
 }
 
+h3{
+    font-size: 1.5em;
+}
 #logo {
   font-family: Circular;
   float: left;

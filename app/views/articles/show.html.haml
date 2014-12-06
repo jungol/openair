@@ -1,5 +1,6 @@
-= render 'layouts/shelf'
 - provide(:title, @article.title)
+
+
 %h1= @article.title
 .author
   -@article.authors.each do |author|
@@ -12,10 +13,10 @@
   Contents
   %ul
     - @article.sections.each do |section|
-      %li= link_to "#{section.heading}", '#'
+      %li= link_to "#{section.heading}", :anchor => "#{section.heading}"
 #content
   -@article.sections.each do |section|
-    .section
+    .section{:id => section.heading}
       %h3= section.heading
       %p=raw section.content
 .references
