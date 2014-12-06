@@ -21,14 +21,7 @@ require 'capybara/rspec'
 #
 # Dir[Rails.root.join("spec/support/**/*.rb")].each { |f| require f }
 
-OmniAuth.config.test_mode = true
-OmniAuth.config.mock_auth[:facebook] = OmniAuth::AuthHash.new({
-  :provider => 'facebook',
-  :uid => '1337',
-  :info => {
-    'email' => 'ethan@test.com'
-  }
-})
+
 
 # Checks for pending migrations before tests are run.
 # If you are not using ActiveRecord, you can remove this line.

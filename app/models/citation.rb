@@ -18,6 +18,7 @@ class Citation < ActiveRecord::Base
   #VALIDATIONS
   validates :citing_id, presence: true
   validates :cited_id, presence: true
+  validate :cannot_cite_self
 
   def self.build_citation(article)
     authors = []
@@ -31,4 +32,9 @@ class Citation < ActiveRecord::Base
     return "#{authors} (#{year}). #{title}. #{journal}, #{volume}(#{issue}), pp. 437-456."
   end
   
+  private
+
+  def cannot_cite_self
+    errors.add(:cited_id, 'article cannot cite itself!') if cited_id == citing_id
+  end
 end

@@ -52,5 +52,15 @@ RSpec.describe Author, :type => :model do
 
   it { should have_many(:edits)}
   it { should have_many(:articles)}
+
+  # Instance Methods
+
+  it "provides full name (#name)" do
+    author = Author.new(
+        :first_name => "Adam",
+        :last_name => "Smith"
+      )
+    expect(author.name).to eq("Adam Smith")
+  end
 	
 end

@@ -48,7 +48,34 @@ RSpec.describe Article, :type => :model do
   
 
   it "is invalid with non-existent publication"
-  it "performs citation methods"
+  
+
+  # INSTANCE METHODS 
+  it "builds its own citation (#cite_me)" do
+    article = create(:article)
+    expect(article.cite_me).to eq(Citation.build_citation(article)) 
+  end
+
+  it "cites another article (#cite!)" do
+    article = create(:article)
+    other_article = create(:article)
+    article.cite!(other_article)
+    expect(article.cited_articles).to include(other_article)
+  end
+
+  it "builds its own bibliography (#bibliography)" do
+    article = create(:article)
+    other_article_1 = create(:article)
+    other_article_2 = create(:article)
+    article.cited_articles << other_article_1
+    article.cited_articles << other_article_2
+    bibliography = [ 
+      Citation.build_citation(other_article_1),
+      Citation.build_citation(other_article_2)
+    ]
+    expect(article.bibliography).to eq(bibliography)
+
+  end
 
 end
 

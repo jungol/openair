@@ -28,37 +28,48 @@ RSpec.describe Citation, :type => :model do
     expect(citation).to be_valid
   end
 
+  it "is invalid when citing_id and cited_id are equal" do
+    citation = Citation.new(citing_id: 1, cited_id: 1)
+    citation.valid?
+    expect(citation.errors[:cited_id]).to include('article cannot cite itself!')
+  end
+
+
   it { should belong_to(:citing) }
   it { should belong_to(:cited) }
 
-  context "build_citation method" do
-    before(:all) do 
-      @article = FactoryGirl.create(:article)
-      @article.title = "Adam Smith and Laissez Faire"
-      publication = FactoryGirl.create(:publication, volume: 35, issue: 2, year: 1927)
+  # Class Methods
+  context "builds citation (#self.build_citation)" do
+    
+    before :each do
+      @article = Article.new(title: "Adam Smith's Second Cousin")
+      publication = Publication.new(year: 1776, issue: 1, volume: 2)
+      journal = Journal.create(name: "Journal of Economics")
+      journal.publications << publication
       publication.articles << @article
-      publication.journal.name = "Journal of Political Economy"
+      author = Author.new(first_name: "Justin", last_name: "Biebz")
+      @article.authors << author
     end
-    # it "works with 1 author" do
-    #   @article.authors = []
-    #   @article.authors << FactoryGirl.create(:author)
-    #   expect(Citation.build_citation(@article)).to eq("Last_Name 1, F. (1927). Adam Smith and Laissez Faire. Journal of Political Economy, 35(2), pp. 437-456.")
-    # end
 
-    # it "works with multiple authors" do
-    #   @article.authors = []
-    #   2.times do
-    #     @article.authors << FactoryGirl.create(:author)
-    #   end
-    #   expect(Citation.build_citation(@article)).to eq("Last_Name 2, F., & Last_Name 3, F. (1927). Adam Smith and Laissez Faire. Journal of Political Economy, 35(2), pp. 437-456.")
-    # end
+    specify "with one author" do
+      expect(Citation.build_citation(@article)).to eq(
+        "Biebz, J. (1776). Adam Smith's Second Cousin. Journal of Economics, 2(1), pp. 437-456."
+      )
+    end
+
+    specify "with two authors" do
+      author = Author.new(first_name: "Selena", last_name: "Gomez")
+      @article.authors << author
+      expect(Citation.build_citation(@article)).to eq(
+        "Biebz, J., & Gomez, S. (1776). Adam Smith's Second Cousin. Journal of Economics, 2(1), pp. 437-456."
+      )
+    end
   end
+
+  # Instance Methods
+
+
 end
-
-
-
-
-
 
 
 

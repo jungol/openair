@@ -3,9 +3,9 @@
 - provide(:title, "Read Article")
 %h1= @article.title
 .author
-  - @article.authors.each do |author|
-    = author.first_name
-    = author.last_name
+  -@article.authors.each do |author|
+    = author.name
+
 .source
   = @article.publication.journal.name
   = link_to "Cite this paper", cite_article_path(@article)

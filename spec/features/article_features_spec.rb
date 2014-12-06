@@ -1,44 +1,24 @@
 require 'rails_helper'
 
-RSpec.describe "Article feature:", :type => :feature do
-  
-  before(:all) { 10.times { FactoryGirl.create(:article) } }
-  after(:all)  { Article.delete_all }
-  before(:each) { visit articles_path }
+feature "Article feature:", :type => :feature do
 
-
-
-  context "-- Article Display --" do
-
-	it "displays content" do
-	  article = Article.all.sample
-	  visit article_path(article)
-		expect(page).to have_content(article.title)
-		# expect(page).to have_content(article.abstract)
-		article.authors.each do |author|
-			expect(page).to have_content(author.first_name)
-			expect(page).to have_content(author.last_name)
-		end
-		article.sections.each do |section|
-			expect(page).to have_content(section.heading)  				
-			expect(page).to have_content(section.content)
-		end
-	end
-
-	it "displays table of contents" do
-		article = Article.all.sample
-	  visit article_path(article)
-		expect(page).to have_content("Contents")
-		article.sections.each do |section|
-		  expect(page).to have_link("#{section.heading}")
-		  pending "TODO - Not matching, but does match on localhost:3000" do
-			  uri = URI.parse(current_url)
-			  expect(uri.path).to eq("#{article_path(article)}##{section.heading}")
-	    end
-	  end
-	end
+  scenario "user views article" do 
+  	user = create_signed_in_user
+  	article = create(:article_with_sections)
+  	user.articles << article
+  	visit root_path
+  	click_link article.title
+  	expect(page).to have_title('Article')
+  	expect(page).to have_selector('h1', text: article.title)
+  	article.authors.each do |author|
+  	  expect(page).to have_selector('div.author', text: author.full_name)
+  	end
+  	article.sections.each do |section|
+  		expect(page).to have_selector('div.section h3', text: section.heading)
+  	end
   end
 end
+
 
 
 

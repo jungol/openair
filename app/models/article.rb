@@ -43,6 +43,7 @@ class Article < ActiveRecord::Base
     end
     return @bibliography
   end
+
 end
 
 

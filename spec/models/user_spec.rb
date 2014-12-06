@@ -45,4 +45,5 @@ RSpec.describe User, :type => :model do
   it { should have_many(:copies)}
   it { should have_many(:articles)}
 
+
 end
