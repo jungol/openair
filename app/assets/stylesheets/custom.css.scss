@@ -130,7 +130,6 @@ ul {
 
 #page-content-wrapper {
     width: 100%;
-    padding: 15px;
 }
 
 #wrapper.toggled #page-content-wrapper {
@@ -160,6 +159,7 @@ h1, h2 {
 	letter-spacing: -2px;
 	margin-bottom: 25px;
 	font-size: 2em;
+    margin-top: 0px;
 }
 
 #logo {
@@ -196,7 +196,7 @@ h1, h2 {
     }
 
     #page-content-wrapper {
-        padding: 20px;
+        // padding: 20px;
     }
 
     #wrapper.toggled #page-content-wrapper {
