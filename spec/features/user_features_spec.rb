@@ -70,7 +70,7 @@ feature "User feature:", :type => :feature do
       article = create(:article)
       visit article_path(article)
       expect(page).to have_title(full_title('Sign In'))
-      click_link 'Sign In'
+      click_link 'Sign in'
       expect(page).to have_title(full_title(article.title))
     end
   end

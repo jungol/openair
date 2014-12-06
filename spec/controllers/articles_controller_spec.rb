@@ -5,6 +5,9 @@ RSpec.describe ArticlesController, :type => :controller do
 	it { should route(:get, '/articles/1').to(action: :show, id: 1)}
 
 	describe 'GET #show' do
+		
+		before { sign_in :user, create(:user) }
+
 		it "assigns the requested article to @article" do
 			article = create(:article)
 			get :show, id: article

@@ -8,7 +8,7 @@ feature "Article feature:", :type => :feature do
   	user.articles << article
   	visit root_path
   	click_link article.title
-  	expect(page).to have_title('Article')
+  	expect(page).to have_title(full_title(article.title))
   	expect(page).to have_selector('h1', text: article.title)
   	article.authors.each do |author|
   	  expect(page).to have_selector('div.author', text: author.full_name)
