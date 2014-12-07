@@ -1,10 +1,9 @@
-%ul.references
-  
-Full Citations
--@citations.each do |citation|
-  %li=citation[0]
+= provide(:title, "Cite")
 
-In-Text Citations
--@citations.each do |citation|
-  %li=citation[1]
-
+%ul.references 
+	%h3 Full Citations
+	-@citations.each do |citation|
+		%li=citation[0]
+	%h3 In-Text Citations
+	-@citations.each do |citation|
+		%li=citation[1]
