@@ -11,13 +11,6 @@ RSpec.describe StaticPagesController, :type => :controller do
 			sign_in @user
 		end
 
-		it "assigns the requested articles to @articles" do
-			article = create(:article)
-			@user.articles << article
-			get :home
-			expect(assigns(:articles)).to match_array([article])
-		end
-
 		it "renders the :home template" do
 			get :home
 			expect(response).to render_template :home

@@ -3,8 +3,7 @@ class CitationsController < ApplicationController
   before_action :authenticate_user!
 
   def index
-  	article = Article.find(params[:article_id])
-  	@citations = article.bibliography
+  	@citations = current_user.shelf_citations
   end
 
   def show

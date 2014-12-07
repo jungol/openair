@@ -62,5 +62,5 @@ RSpec.describe Author, :type => :model do
       )
     expect(author.name).to eq("Adam Smith")
   end
-	
+
 end

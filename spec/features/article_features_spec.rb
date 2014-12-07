@@ -17,6 +17,14 @@ feature "Article feature:", :type => :feature do
   		expect(page).to have_selector('div.section h3', text: section.heading)
   	end
   end
+
+  scenario "user has access to shelf from article page" do
+    user = create_signed_in_user
+    article = create(:article)
+    user.articles << article
+    visit article_path(article)
+    expect(page).to have_selector('div#sidebar-wrapper')
+  end
 end
 
 

@@ -17,6 +17,11 @@ FactoryGirl.define  do
     article
   end
 
+  factory :author do
+    sequence(:first_name) { |n| "First_Name #{n}" }
+    sequence(:last_name)  { |n| "Last_Name #{n}"  }
+  end
+
   factory :article do
     sequence(:title)    { |n| "Title #{n}"    }
     sequence(:abstract) { |n| "Abstract #{n}"}
@@ -30,11 +35,6 @@ FactoryGirl.define  do
       	create_list(:section, evaluator.sections_count, article: article)
       end
     end
-  end
-
-  factory :author do
-  	sequence(:first_name) { |n| "First_Name #{n}" }
-  	sequence(:last_name)  { |n| "Last_Name #{n}"  }
   end
 
   factory :user do

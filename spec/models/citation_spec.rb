@@ -42,7 +42,7 @@ RSpec.describe Citation, :type => :model do
   context "builds citation (#self.build_citation)" do
     
     before :each do
-      @article = Article.new(title: "Adam Smith's Second Cousin")
+      @article = Article.new(title: "Adam Smith's Second Cousin", first_page: 200, last_page: 217)
       publication = Publication.new(year: 1776, issue: 1, volume: 2)
       journal = Journal.create(name: "Journal of Economics")
       journal.publications << publication
@@ -53,7 +53,7 @@ RSpec.describe Citation, :type => :model do
 
     specify "with one author" do
       expect(Citation.build_citation(@article)).to eq(
-        "Biebz, J. (1776). Adam Smith's Second Cousin. Journal of Economics, 2(1), pp. 437-456."
+        "Biebz, J.(1776). Adam Smith's Second Cousin. Journal of Economics, 2(1), pp. 200 - 217"
       )
     end
 
@@ -61,7 +61,7 @@ RSpec.describe Citation, :type => :model do
       author = Author.new(first_name: "Selena", last_name: "Gomez")
       @article.authors << author
       expect(Citation.build_citation(@article)).to eq(
-        "Biebz, J., & Gomez, S. (1776). Adam Smith's Second Cousin. Journal of Economics, 2(1), pp. 437-456."
+        "Biebz, J., & Gomez, S.(1776). Adam Smith's Second Cousin. Journal of Economics, 2(1), pp. 200 - 217."
       )
     end
   end

@@ -37,4 +37,8 @@ class User < ActiveRecord::Base
       user.password = Devise.friendly_token[0,20]
     end
   end
+
+  def shelf_citations
+    articles.map(&:cite_me)
+  end
 end

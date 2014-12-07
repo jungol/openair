@@ -74,11 +74,38 @@ RSpec.describe Article, :type => :model do
       Citation.build_citation(other_article_2)
     ]
     expect(article.bibliography).to eq(bibliography)
-
   end
 
-end
+  it "creates array of shelf citations (#shelf_citations)" do
+    user = create(:user)
+    3.times do |n|
+      user.articles << create(:article)
+    end
+    citations = user.articles.map(&:cite_me)
+    expect(user.shelf_citations).to eq(citations)
+  end
 
+  context "orders articles aplhabetically by author last name" do
+    specify "with one author per article" do
+      last_names = ["Smith", "Bieber", "Barhydt"]
+      last_names.each do |last_name|
+        author = create(:author, last_name: last_name)
+        article = create(:article)
+        article.authors << author
+      end
+      authors = []
+      Article.all.each do |article|
+        authors << article.authors.first
+      end
+      expect(authors[0].last_name).to eq("Barhydt")
+      expect(authors[1].last_name).to eq("Bieber")
+      expect(authors[2].last_name).to eq("Smith")
+    end
+    specify "with two authors per article" 
+  end
+
+
+end
 
 
 

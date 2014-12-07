@@ -11,7 +11,8 @@
 #
 
 class Article < ActiveRecord::Base
-	
+	default_scope -> { includes(:authors).order("authors.last_name") }
+
   #ASSOCIATIONS
   belongs_to :publication
   has_many :edits
@@ -37,11 +38,24 @@ class Article < ActiveRecord::Base
   end
 
   def bibliography
-    @bibliography = []
-    cited_articles.each do |article|
-      @bibliography << Citation.build_citation(article)
-    end
-    return @bibliography
+    @bibliography = cited_articles.map{
+     |article| Citation.build_citation(article) }
+  end
+
+  def publication_year
+    publication.year
+  end
+
+  def publication_volume
+    publication.volume
+  end
+
+  def publication_issue
+    publication.issue
+  end
+
+  def journal_name
+    publication.journal.name
   end
 
 end

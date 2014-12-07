@@ -21,15 +21,17 @@ class Citation < ActiveRecord::Base
   validate :cannot_cite_self
 
   def self.build_citation(article)
-    authors = []
-    article.authors.each { |author| authors << "#{author.last_name}, #{author.first_name[0]}." }
-    authors = authors.join(', & ')
-    year = article.publication.year
-    journal = article.publication.journal.name
-    volume = article.publication.volume
-    issue = article.publication.issue
+    # authors = []
+    # article.authors.each { |author| authors << "#{author.last_name}, #{author.first_name[0]}." }
+    authors = article.authors.map{
+     |author| "#{author.last_name}, #{author.first_name[0]}."
+    }.join(', & ')
+    year = article.publication_year
+    journal = article.journal_name
+    volume = article.publication_volume
+    issue = article.publication_issue
     title = article.title
-    return "#{authors} (#{year}). #{title}. #{journal}, #{volume}(#{issue}), pp. 437-456."
+    return "#{authors}(#{year}). #{title}. #{journal}, #{volume}(#{issue}), pp. 437-456."
   end
   
   private
