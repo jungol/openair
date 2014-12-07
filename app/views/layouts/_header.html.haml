@@ -2,7 +2,7 @@
   %nav.navbar-fixed-top.navbar-default
     .container-fluid
       .pull-left= link_to "openair", root_path, id: "logo"
-      .navbar-right
+      .navbar-right.pull-right
         - if user_signed_in?
           = link_to "Sign Out", destroy_user_session_path, method: :delete, :class => "openair-btn btn navbar-btn"
         - else 
