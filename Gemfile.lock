@@ -256,34 +256,34 @@ PLATFORMS
   ruby
 
 DEPENDENCIES
-  annotate
-  bootstrap-sass
+  annotate (~> 2.6.5)
+  bootstrap-sass (~> 3.3.0.1)
   capybara (~> 2.3.0)
   coffee-rails (~> 4.0.0)
-  devise
-  factory_girl_rails
-  faker
+  devise (~> 3.4.1)
+  factory_girl_rails (~> 4.5.0)
+  faker (~> 1.4.3)
   guard-rspec
-  guard-spork
-  haml
+  guard-spork (~> 1.5.1)
+  haml (~> 4.0.5)
   jbuilder (~> 2.0)
   jquery-rails
-  launchy
+  launchy (~> 2.4.2)
   minitest-rails
-  omniauth
-  omniauth-facebook
-  pg
+  omniauth (~> 1.2.2)
+  omniauth-facebook (~> 2.0.0)
+  pg (~> 0.17.1)
   rails (= 4.1.6)
-  rails_12factor (= 0.0.2)
+  rails_12factor (~> 0.0.2)
   rspec-rails (~> 3.1.0)
   sass-rails (~> 4.0.3)
   sdoc (~> 0.4.0)
-  selenium-webdriver
-  shoulda-matchers
+  selenium-webdriver (~> 2.44.0)
+  shoulda-matchers (~> 2.7.0)
   spork-rails (~> 4.0.0)
   spring
-  sprockets
-  sqlite3
+  sprockets (~> 2.11.3)
+  sqlite3 (~> 1.3.10)
   therubyracer
   turbolinks
   uglifier (>= 1.3.0)
