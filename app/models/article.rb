@@ -8,6 +8,8 @@
 #  updated_at     :datetime
 #  abstract       :text
 #  publication_id :integer
+#  first_page     :integer
+#  last_page      :integer
 #
 
 class Article < ActiveRecord::Base
@@ -58,6 +60,9 @@ class Article < ActiveRecord::Base
     publication.journal.name
   end
 
+  def pages
+    [first_page, last_page]
+  end
 end
 
 

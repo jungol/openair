@@ -53,7 +53,7 @@ RSpec.describe Citation, :type => :model do
 
     specify "with one author" do
       expect(Citation.build_citation(@article)).to eq(
-        "Biebz, J.(1776). Adam Smith's Second Cousin. Journal of Economics, 2(1), pp. 200 - 217"
+        "Biebz, J.(1776). Adam Smith's Second Cousin. Journal of Economics, 2(1), pp. 200 - 217."
       )
     end
 

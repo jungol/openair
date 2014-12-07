@@ -1,4 +1,10 @@
 %ul.references
-  -@citations.each do |citation|
-    %li=citation
-    
+  
+Full Citations
+-@citations.each do |citation|
+  %li=citation[0]
+
+In-Text Citations
+-@citations.each do |citation|
+  %li=citation[1]
+

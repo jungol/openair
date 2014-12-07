@@ -8,6 +8,8 @@
 #  updated_at     :datetime
 #  abstract       :text
 #  publication_id :integer
+#  first_page     :integer
+#  last_page      :integer
 #
 
 require 'rails_helper'
@@ -85,7 +87,7 @@ RSpec.describe Article, :type => :model do
     expect(user.shelf_citations).to eq(citations)
   end
 
-  context "orders articles aplhabetically by author last name" do
+  context "orders articles alphabetically by author last name" do
     specify "with one author per article" do
       last_names = ["Smith", "Bieber", "Barhydt"]
       last_names.each do |last_name|

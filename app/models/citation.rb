@@ -31,7 +31,10 @@ class Citation < ActiveRecord::Base
     volume = article.publication_volume
     issue = article.publication_issue
     title = article.title
-    return "#{authors}(#{year}). #{title}. #{journal}, #{volume}(#{issue}), pp. 437-456."
+    pages = article.pages
+    return ["#{authors}(#{year}). #{title}. #{journal}, #{volume}(#{issue}), pp. #{pages.join(' - ')}.",
+            "(#{authors}, #{year})"
+            ]
   end
   
   private

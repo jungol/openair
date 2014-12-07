@@ -25,6 +25,8 @@ FactoryGirl.define  do
   factory :article do
     sequence(:title)    { |n| "Title #{n}"    }
     sequence(:abstract) { |n| "Abstract #{n}"}
+    first_page 100
+    last_page 120
     publication
   
     factory :article_with_sections do
