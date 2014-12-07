@@ -3,8 +3,6 @@ ruby '2.0.0'
 
 # Bundle edge Rails instead: gem 'rails', github: 'rails/rails'
 gem 'rails', '4.1.6'
-gem 'shoulda-matchers', '~> 2.7.0'
-gem 'minitest-rails'
 gem 'haml', '~> 4.0.5'
 gem 'faker', '~> 1.4.3'
 gem 'sass-rails', '~> 4.0.3' # Use SCSS for stylesheets
@@ -12,7 +10,7 @@ gem 'coffee-rails', '~> 4.0.0' # Use CoffeeScript for .js.coffee assets and view
 gem 'uglifier', '>= 1.3.0' # Use Uglifier as compressor for JavaScript assets
 gem 'bootstrap-sass', '~> 3.3.0.1'
 gem 'sprockets', '~> 2.11.3'
-gem 'therubyracer', platforms: :ruby
+gem 'therubyracer', '~>  0.12.1', platforms: :ruby
 gem 'devise', '~> 3.4.1'
 gem 'omniauth', '~> 1.2.2'
 gem 'omniauth-facebook', '~> 2.0.0'
@@ -36,6 +34,7 @@ group :test do
   gem 'capybara', '~> 2.3.0'
   gem 'spork-rails', '~> 4.0.0'
   gem 'launchy', '~> 2.4.2'
+  gem 'shoulda-matchers', '~> 2.7.0'
 end
 
 group :production do
