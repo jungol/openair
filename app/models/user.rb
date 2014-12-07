@@ -20,8 +20,11 @@
 #
 
 class User < ActiveRecord::Base
+  
   has_many :copies
   has_many :articles, :through => :copies
+  
+  after_create :send_welcome_email 
 
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -40,5 +43,11 @@ class User < ActiveRecord::Base
 
   def shelf_citations
     articles.map(&:cite_me)
+  end
+
+  private
+
+  def send_welcome_email
+    UserMailer.deliver_welcome_email(self)
   end
 end
