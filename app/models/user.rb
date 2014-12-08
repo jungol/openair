@@ -24,8 +24,6 @@ class User < ActiveRecord::Base
   has_many :copies
   has_many :articles, :through => :copies
   
-  after_create :send_welcome_email 
-
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
   devise :database_authenticatable, :registerable,
@@ -45,9 +43,5 @@ class User < ActiveRecord::Base
     articles.map(&:cite_me)
   end
 
-  private
 
-  def send_welcome_email
-    UserMailer.deliver_welcome_email(self)
-  end
 end
