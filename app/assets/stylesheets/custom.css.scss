@@ -15,10 +15,11 @@ body {
 	padding-right: 15px;
     padding-left: 15px;
     font-family: Serif;
+    font-size: 1.5em;
 }
 
 ul {
-	list-style: none;
+	list-style-type: none;
 	padding: 0;
 }
 
@@ -152,6 +153,47 @@ ul {
 	text-indent: -22px; // hanging indent
 	}
 
+// ********************
+//        HOME
+// ********************  
+
+.home {
+    font-size: 1.1em;
+    list-style-type: disc;
+}
+
+#signed-out {
+    text-align: center;
+    padding: 25px;
+    font-size: 1.5em;
+    span {
+        color: #179ac8;
+    }
+    a {
+        font-size: 2em;
+    }
+}
+
+
+
+#hello {
+    font-size: 1.2em;
+}
+
+.highlight img {
+
+}
+
+.highlight li {
+    padding: 5px;
+}
+
+.highlight li span {
+    background-color: yellow;
+    list-style-type: disc;
+}
+
+
 
 // ********************
 //    TYPOGRAPHY
@@ -184,7 +226,7 @@ h3{
 //        MEDIA
 // ********************
  
-@media(min-width:780px) {
+@media(min-width:550px) {
     #wrapper {
         padding-left: 250px;
     }

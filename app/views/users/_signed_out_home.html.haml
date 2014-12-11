@@ -1,1 +1,7 @@
-This is the signed out home page
+.home#signed-out
+	%p 
+		For the thesis writer with a lot on their plate, 
+		%span.openair OpenAir 
+		is the online bookshelf that lets you read, quote and cite your research in one click. Unlike traditional research databases, OpenAir provides a clean interface that takes care of the busywork so that you can focus on the stuff that really matters.
+
+	= link_to "Sign Up", user_omniauth_authorize_path(:facebook), :class => "openair-btn btn navbar-btn"
