@@ -26,7 +26,7 @@ class User < ActiveRecord::Base
   has_many :copies
   has_many :articles, :through => :copies
   before_create :add_articles_to_user
-  after_create :send_admin_email
+  # after_create :send_admin_email
   
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -34,11 +34,11 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook]
 
-  # rails_admin do
-  #   configure :box do
-  #     label 'Box:'
-  #   end
-  # end
+  rails_admin do
+    configure :box do
+      label 'Box:'
+    end
+  end
   
 
   def self.from_omniauth(auth)
@@ -59,8 +59,8 @@ class User < ActiveRecord::Base
     self.articles << Article.all
   end
 
-  def send_admin_email
-    UserMailer.deliver_welcome_email(self)
-  end
+  # def send_admin_email
+  #   UserMailer.deliver_welcome_email(self)
+  # end
 
 end
