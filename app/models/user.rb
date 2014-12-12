@@ -34,11 +34,11 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook]
 
-  rails_admin do
-    configure :box do
-      label 'Box:'
-    end
-  end
+  # rails_admin do
+  #   configure :box do
+  #     label 'Box:'
+  #   end
+  # end
   
 
   def self.from_omniauth(auth)
