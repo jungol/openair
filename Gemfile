@@ -14,6 +14,7 @@ gem 'therubyracer', '~>  0.12.1', platforms: :ruby
 gem 'devise', '~> 3.4.1'
 gem 'omniauth', '~> 1.2.2'
 gem 'omniauth-facebook', '~> 2.0.0'
+gem 'rails_admin'
 
 group :development do
   gem 'guard-spork', '~> 1.5.1'
