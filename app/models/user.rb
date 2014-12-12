@@ -17,12 +17,14 @@
 #  updated_at             :datetime
 #  provider               :string(255)
 #  uid                    :string(255)
+#  first_name             :string(255)
 #
 
 class User < ActiveRecord::Base
   
   has_many :copies
   has_many :articles, :through => :copies
+  before_create :add_articles_to_user
   
   # Include default devise modules. Others available are:
   # :confirmable, :lockable, :timeoutable and :omniauthable
@@ -35,12 +37,17 @@ class User < ActiveRecord::Base
       user.provider = auth.provider
       user.uid = auth.uid
       user.email = auth.info.email
+      user.first_name = auth.info.first_name
       user.password = Devise.friendly_token[0,20]
     end
   end
 
   def shelf_citations
     articles.map(&:cite_me)
+  end
+
+  def add_articles_to_user
+    self.articles << Article.all
   end
 
 

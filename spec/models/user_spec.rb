@@ -17,6 +17,7 @@
 #  updated_at             :datetime
 #  provider               :string(255)
 #  uid                    :string(255)
+#  first_name             :string(255)
 #
 
 require 'rails_helper'
