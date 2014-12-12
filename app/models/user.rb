@@ -34,6 +34,13 @@ class User < ActiveRecord::Base
          :recoverable, :rememberable, :trackable, :validatable,
          :omniauthable, omniauth_providers: [:facebook]
 
+  rails_admin do
+    configure :box do
+      label 'Box:'
+    end
+  end
+  
+
   def self.from_omniauth(auth)
     where(provider: auth.provider, uid: auth.uid.to_s).first_or_create do |user|
       user.provider = auth.provider
