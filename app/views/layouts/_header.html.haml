@@ -4,6 +4,7 @@
       .pull-left= link_to "openair", root_path, id: "logo"
       .navbar-right.pull-right
         - if user_signed_in?
+          = link_to "Cite my articles", citations_path, class: "openair-btn btn navbar-btn"
           = link_to "Sign Out", destroy_user_session_path, method: :delete, :class => "openair-btn btn navbar-btn"
         - else 
           = link_to "Sign In", user_omniauth_authorize_path(:facebook), :class => "openair-btn btn navbar-btn"
