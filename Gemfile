@@ -17,8 +17,8 @@ gem 'omniauth-facebook', '~> 2.0.0'
 gem 'rails_admin'
 
 group :development do
-  gem 'guard-spork', '~> 1.5.1'
-  gem 'guard-rspec', require: false
+  gem 'guard-spork', '~> 2.1.0'
+  gem 'guard-rspec', '~> 4.5.0', require: false
   gem 'annotate', '~> 2.6.5'
 
 end
@@ -33,7 +33,7 @@ end
 group :test do
   gem 'selenium-webdriver', '~> 2.44.0'
   gem 'capybara', '~> 2.3.0'
-  gem 'spork-rails', '~> 4.0.0'
+  gem 'spork-rails' #~> 4.0.0'
   gem 'launchy', '~> 2.4.2'
   gem 'shoulda-matchers', '~> 2.7.0'
 end
