@@ -23,7 +23,8 @@ module OmniAuthTests
 	  :provider => 'facebook',
 	  :uid => '1337',
 	  :info => {
-	    'email' => 'ethan@test.com'
+	    'email' => 'ethan@test.com',
+	    'first_name' => 'Ethan'
 	  }
 	})
 

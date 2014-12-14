@@ -33,6 +33,8 @@ RSpec.describe User, :type => :model do
   it { should respond_to(:password) }
   it { should respond_to(:provider) }
   it { should respond_to(:uid) }
+  it { should respond_to(:first_name)}
+  it { should respond_to(:box)}
 
 
   it "is valid with email, password" do

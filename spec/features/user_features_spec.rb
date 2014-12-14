@@ -24,7 +24,7 @@ feature "User feature:", :type => :feature do
     expect(page).to have_link "Sign Out"
     expect(page).not_to have_link "Sign In"
     click_link "Sign Out"
-    expect(page).to have_content("Signed out")
+    expect(page).to have_content("Goodbye")
     expect(page).to have_link "Sign In"
     expect(page).not_to have_link "Sign Out"
   end
@@ -49,6 +49,8 @@ feature "User feature:", :type => :feature do
     expect(User.all.count).to eq(1)
     user = User.first
     expect(user.email).to eq('ethan@test.com')
+    expect(user.first_name).to eq('Ethan')
+    expect(user.articles).to eq(Article.all)
   end
 
   scenario "existing user signs in" do

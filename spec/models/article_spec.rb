@@ -30,6 +30,7 @@ RSpec.describe Article, :type => :model do
   it { should respond_to(:citing_articles) }
   it { should respond_to(:reverse_citations) }
   it { should respond_to(:publication) }
+  it { should respond_to(:pages)}
 
   it { should validate_presence_of(:title)}
 
