@@ -27,3 +27,8 @@
       %li
         - @article.bibliography.each do |citation|
           =citation
+
+:javascript
+  $('#sentence').click(function() {
+    $(this).toggleClass("highlight");
+  });
