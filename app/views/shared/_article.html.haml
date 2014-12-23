@@ -1,0 +1,29 @@
+%h1= @article.title
+.author
+  -@article.authors.each do |author|
+    = author.name
+
+.source
+  = @article.journal_name
+  = link_to "Cite this paper", cite_article_path(@article)
+#table_of_contents
+  Contents
+  %ul
+    - @article.sections.each do |section|
+      %li= link_to "#{section.heading}", :anchor => "#{section.heading}"
+#content
+  -@article.sections.each do |section|
+    .section{:id => section.heading}
+      %h3= section.heading
+      %p=raw section.content
+.references
+  #citation
+    %h3 
+      Cite this paper
+      = link_to "Click here", cite_article_path(@article)
+  #bibliography
+    %h3 Bibliography
+    %ul
+      %li
+        - @article.bibliography.each do |citation|
+          =citation

@@ -1,8 +1,1 @@
-%li
-  %a{href: article_path(shelf_item)}
-    .title
-      =shelf_item.title
-    .author
-      -shelf_item.authors.each do |author|
-        = author.name
-
+%li= link_to "#{shelf_item.title}", article_path(shelf_item), remote: true
