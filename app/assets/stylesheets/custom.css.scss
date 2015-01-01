@@ -50,7 +50,7 @@ ul {
 }
 
 .highlight {
-    background: yellow;
+    background: #ffff99;
 }
 
 // ********************
@@ -76,8 +76,20 @@ ul {
 	background: white;
 	border-bottom: 1px solid #ccc;
     padding-right: 15px;
-
 }
+
+.annotate {
+    background: white;
+    border: 1px solid #2f2f2f;
+    width: 200px;
+}
+
+.annotate-active {
+    -moz-box-shadow:    inset 0 0 10px #000000;
+    -webkit-box-shadow: inset 0 0 10px #000000;
+    box-shadow:         inset 0 0 10px #000000;
+}
+
 
 // ********************
 //      SIDEBAR

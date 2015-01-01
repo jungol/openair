@@ -21,4 +21,12 @@ class Section < ActiveRecord::Base
 	validates :article_id, presence: true
 	validates :heading, presence: true
 
+  def section_content_to_array
+    return (self.content = [[""]]) if (self.content == nil)
+    paragraphs = self.content.split(%r{[\r\n)]+})
+    content_array = paragraphs.map{ |p| p.split(%r{(?<=\.|\?|\!)\s*}) }
+    self.content = content_array
+  end
 end
+
+

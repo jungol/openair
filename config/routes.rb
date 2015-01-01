@@ -5,9 +5,10 @@ Rails.application.routes.draw do
   root 'static_pages#home'
 
   resources :articles do
-    get :cite, :on => :member, to: 'citations#show', via: 'get'
+    get :cite, :on => :member, to: 'citations#show'
   end
    
   resources :citations, only: [:index]
+  resources :highlights, only: [:create, :destroy]
 
 end

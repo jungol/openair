@@ -43,4 +43,9 @@ FactoryGirl.define  do
     sequence(:email) { |n| "Email_#{n}@Example.com"}
     sequence(:password) { |n| "Password_#{n}"}
   end
+
+  factory :highlight do
+    sequence(:location) { |n| n }
+  end
+
 end 

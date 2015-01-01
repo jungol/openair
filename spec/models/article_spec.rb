@@ -54,6 +54,7 @@ RSpec.describe Article, :type => :model do
   
 
   # INSTANCE METHODS 
+
   it "builds its own citation (#cite_me)" do
     article = create(:article)
     expect(article.cite_me).to eq(Citation.build_citation(article)) 
@@ -107,6 +108,14 @@ RSpec.describe Article, :type => :model do
     specify "with two authors per article" 
   end
 
+  it "turns its section content into an array (#section_content_to_array)" do
+    article = create(:article)
+    section = create(:section)
+    section.content = "This is some section content"
+    article.sections << section
+    article.article_content_to_array
+    expect(section.content).to eq([["This is some section content"]])
+  end
 
 end
 

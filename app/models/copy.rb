@@ -13,6 +13,7 @@ class Copy < ActiveRecord::Base
 	#ASSOCIATIONS
 	belongs_to :article
 	belongs_to :user
+  has_many :highlights
 
 	#VALIDATIONS
 	validates :user_id, presence: true

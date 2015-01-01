@@ -6,12 +6,18 @@ RSpec.describe ArticlesController, :type => :controller do
 
 	describe 'GET #show' do
 		
-		before { sign_in :user, create(:user) }
+		before do
+			@user = create(:user)
+			sign_in :user, @user
+		end
 
 		it "assigns the requested article to @article" do
 			article = create(:article)
+			@user.articles << article
+			copy = @user.copies.find_by(article_id: article.id)
 			get :show, id: article
 			expect(assigns(:article)).to eq article
+			expect(assigns(:highlights)).to eq (copy.highlights)
 		end
 
 		it "renders the :show template" do

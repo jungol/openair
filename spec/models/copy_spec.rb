@@ -17,6 +17,7 @@ RSpec.describe Copy, :type => :model do
 
 	it { should respond_to(:article_id)}
 	it { should respond_to(:user_id)}
+  it { should respond_to(:highlights)}
 
 	it "is valid with article_id, user_id" do
 		expect(copy).to be_valid	

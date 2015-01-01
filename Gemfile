@@ -15,6 +15,7 @@ gem 'devise', '~> 3.4.1'
 gem 'omniauth', '~> 1.2.2'
 gem 'omniauth-facebook', '~> 2.0.0'
 gem 'rails_admin'
+gem 'jquery-turbolinks'
 
 group :development do
   gem 'guard-spork', '~> 2.1.0'
@@ -26,8 +27,10 @@ end
 group :development, :test do 
   gem 'sqlite3', '~> 1.3.10'
   gem 'rspec-rails', '~> 3.1.0'
-  gem 'factory_girl_rails', '~> 4.5.0'
-
+  gem 'factory_girl_rails'
+  gem 'jasminerice', :git => 'https://github.com/bradphelan/jasminerice.git'
+  gem 'guard-jasmine'
+  gem 'debugger'
 end
 
 group :test do

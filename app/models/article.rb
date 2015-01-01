@@ -63,6 +63,14 @@ class Article < ActiveRecord::Base
   def pages
     [first_page, last_page]
   end
+
+  def article_content_to_array
+    sections.each do |section|
+      section.section_content_to_array
+    end
+  end
+
+
 end
 
 

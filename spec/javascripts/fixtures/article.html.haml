@@ -1,0 +1,27 @@
+// set @highlights instance variable as if it were coming from controller
+// Only span#1 gets a highlight when $('.sentence').highlight() is called
+- @highlights = [1]
+
+#article
+
+  %button.btn.annotate
+    Hold SHIFT to annotate
+
+  %h1#article_title Fake Title
+
+
+  .content
+    .section
+      %h3 
+      %p
+        %span.sentence#1
+          This is a fake sentence that should highlight upon a click.
+        %span.sentence#2
+          This is another fake sentence.
+        %span.sentence#3
+          This is another fake sentence.
+
+  // Turn @highlights into javascript object for highlighter.js.coffee
+  // This fakes that location: 1 is in the database
+  = content_tag "div", class: "temp_info", data: {highlights: @highlights, copyid: '1'} do
+    false
