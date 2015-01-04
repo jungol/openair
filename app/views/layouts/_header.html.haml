@@ -4,8 +4,7 @@
       .navbar-left.pull-left= link_to "openair", root_path, id: "logo"
       .navbar-right.pull-right
         - if user_signed_in?
-          %button.btn.annotate
-            Hold SHIFT to annotate
+          %span.updates
           = link_to "Cite my articles", citations_path, class: "openair-btn btn navbar-btn"
           = link_to "Sign Out", destroy_user_session_path, method: :delete, :class => "openair-btn btn navbar-btn"
         - else 

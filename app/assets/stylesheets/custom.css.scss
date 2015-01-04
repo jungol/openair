@@ -53,6 +53,34 @@ ul {
     background: #ffff99;
 }
 
+/* Custom Container (Fixed) */
+
+
+.container-fixed > hr {
+    margin: 30px 0;
+}
+
+textarea {
+    border: none;
+    outline: none;
+    resize: none;
+}
+
+textarea:focus {
+    // border-left: 1px solid black;
+}
+
+.processor {
+    font-size: .9em;
+    color: #777;
+    text-align: left;
+}
+
+.updates {
+    margin-right: 220px;
+}
+
+
 // ********************
 //      WRAPPER
 // ********************
@@ -289,7 +317,7 @@ h3{
 
     #page-content-wrapper {
         padding-left: 250px;
-        padding-right: 50px;
+        // padding-right: 50px;
     }
 
     #wrapper.toggled #page-content-wrapper {
@@ -303,8 +331,23 @@ h3{
     }
 }
 
-@media(min-width:1200px) {
-    #page-content-wrapper {
-        padding-right: 300px;
+@media(min-width: $screen-xs) {
+    .updates{
+        display: none;
     }
+}
+
+
+@media(min-width: $screen-md) {
+    .container-fixed {
+        margin-left: 0 auto;
+        width: 768px;
+    }
+    .margin{
+        padding-right: 10px;
+    }
+    .updates{
+        display: inline;
+    }
+
 }

@@ -1,42 +1,50 @@
-%h1#article_title= @article.title
-%h2= @copy.id
-%h3= @highlights
-.author
-  -@article.authors.each do |author|
-    = author.name
+.container-fixed
+  %h1#article_title= @article.title
+  / %h2= @copy.id
+  / %h3= @highlights
+  / %h4= @notes
+  .author
+    -@article.authors.each do |author|
+      = author.name
 
-.source
-  = @article.journal_name
-  = link_to "Cite this paper", cite_article_path(@article)
-#table_of_contents
-  Contents
-  %ul
-    - @article.sections.each do |section|
-      %li= link_to "#{section.heading}", :anchor => "#{section.heading}"
-#content
-  -@id=0
-  -@article.sections.each do |section|
-    .section{id: section.heading}
-      %h3= section.heading
-      -section.content.each do |paragraph|
-        = content_tag :p do
-          - paragraph.each do |sentence|
-            = content_tag :span, class: "sentence", id: @id do
-              = sentence
-              - @id += 1
-
-.references
-  #citation
-    %h3 
-      Cite this paper
-      = link_to "Click here", cite_article_path(@article)
-  #bibliography
-    %h3 Bibliography
+  .source
+    = @article.journal_name
+    = link_to "Cite this paper", cite_article_path(@article)
+  #table_of_contents
+    Contents
     %ul
-      %li
-        - @article.bibliography.each do |citation|
-          =citation
+      - @article.sections.each do |section|
+        %li= link_to "#{section.heading}", :anchor => "#{section.heading}"
+  #content
+    -@id=0
+    -@paragraph_id = 0
+    -@article.sections.each do |section|
+      .section{id: section.heading}
+        .row
+          %h3.col-xs-12.col-md-8= section.heading
+        -section.content.each do |paragraph|
+          .paragraph.row
+            = content_tag :p, class: "col-md-8 col-s-11 col-xs-12" do
+              - paragraph.each do |sentence|
+                = content_tag :span, class: "sentence", id: @id do
+                  = sentence
+                  - @id += 1
+            .margin.hidden-sm.hidden-xs.col-md-4{style: "height: 100%;", id: "paragraph_#{@paragraph_id}"}
+              %textarea
+              - @paragraph_id += 1
 
-// Turn @highlights into javascript object for highlighter.js.coffee
-= content_tag "div", class: "temp_info", data: {highlights: @highlights, copyid: @copy.id} do
-  false
+  .references
+    #citation
+      %h3 
+        Cite this paper
+        = link_to "Click here", cite_article_path(@article)
+    #bibliography
+      %h3 Bibliography
+      %ul
+        %li
+          - @article.bibliography.each do |citation|
+            =citation
+
+  // Turn @highlights into javascript object for highlighter.js.coffee
+  = content_tag "div", class: "temp_info", data: {highlights: @highlights, copyid: @copy.id, notes: @notes} do
+    false

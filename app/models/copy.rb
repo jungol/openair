@@ -14,6 +14,7 @@ class Copy < ActiveRecord::Base
 	belongs_to :article
 	belongs_to :user
   has_many :highlights
+  has_many :notes
 
 	#VALIDATIONS
 	validates :user_id, presence: true

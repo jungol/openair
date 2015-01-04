@@ -8,13 +8,15 @@ $.fn.highlight = ->
 			$('#' + value).addClass("highlight")
 		)
 
+	$('.updates').html('<span class = "processor">Press Command + Click the sentence you want to highlight.</span>')
+
 	$('body').keydown( (e)-> 
 		respondToShiftKey(e))
 
 	respondToShiftKey = (e)->
 		if (e.keyCode == 91)
 			$('body').css('cursor', 'pointer')
-			$('.annotate').addClass('annotate-active').text("Get Annotating!")
+			$('.updates').html('<span class = "processor">Highlighting... (Click anywhere on a sentence to highlight it)</span>')
 			$('.sentence').on("click", highlightSentence)
 			$('body').keyup( (e) ->
 				#console.log("yo") #PROBELM
@@ -22,7 +24,7 @@ $.fn.highlight = ->
 
 	respondToShiftKeyRelease = (e)->
 		$('body').css('cursor', 'default')
-		$('.annotate').removeClass('annotate-active').text("Hold SHIFT to annotate")
+		$('.updates').html('<span class = "processor">Press Command + Click the sentence you want to highlight.</span>')		
 		$('.sentence').unbind()
 		$('body').unbind('keyup')
 
