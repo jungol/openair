@@ -64,6 +64,10 @@ textarea {
     border: none;
     outline: none;
     resize: none;
+    // background: #d3d3d3;
+    background: #f5f5f5;
+    // padding: 10px;
+    box-shadow: 2px 2px 0px #ccc;
 }
 
 textarea:focus {
@@ -209,7 +213,6 @@ textarea:focus {
 }
 
 #table_of_contents {
-	background: #f5f5f5;
 	margin-bottom: 25px;
 }
 

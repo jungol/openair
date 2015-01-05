@@ -14,7 +14,7 @@ $.fn.highlight = ->
 		respondToShiftKey(e))
 
 	respondToShiftKey = (e)->
-		if (e.keyCode == 91)
+		if (e.keyCode == 18)
 			$('body').css('cursor', 'pointer')
 			$('.updates').html('<span class = "processor">Highlighting... (Click anywhere on a sentence to highlight it)</span>')
 			$('.sentence').on("click", highlightSentence)
@@ -33,6 +33,8 @@ $.fn.highlight = ->
 		$(this).one("click", backToFullArticle)
 		$('span:not(.highlight)').hide()
 		$('span:visible').wrap('<li></li>')
+		val = $('.margin').children('textarea').val()
+		$('.paragraph p').append(val)
 		$('#collect').text("Full article")
 		
 	backToFullArticle = ->

@@ -21,10 +21,10 @@
     -@article.sections.each do |section|
       .section{id: section.heading}
         .row
-          %h3.col-xs-12.col-md-8= section.heading
+          %h3.col-xs-12.col-md-8.col-sm-10= section.heading
         -section.content.each do |paragraph|
           .paragraph.row
-            = content_tag :p, class: "col-md-8 col-s-11 col-xs-12" do
+            = content_tag :p, class: "col-md-8 col-sm-10 col-xs-12" do
               - paragraph.each do |sentence|
                 = content_tag :span, class: "sentence", id: @id do
                   = sentence
