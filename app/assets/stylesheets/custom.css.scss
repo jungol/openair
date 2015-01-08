@@ -1,6 +1,34 @@
 @import "bootstrap-sprockets";
 @import "bootstrap";
 $light-gray: #777;
+@font-face {
+    font-family: 'Bitter-Regular';
+    src: font_url('Bitter-Regular.otf') format('opentype');
+
+}
+
+@font-face {
+    font-family: 'Aileron-Regular';
+    src: font_url('Aileron-Regular.otf') format('opentype');
+
+}
+@font-face {
+    font-family: 'Aileron-Light';
+    src: font_url('Aileron-Light.otf') format('opentype');
+
+}
+@font-face {
+    font-family: 'Aileron-SemiBold';
+    src: font_url('Aileron-SemiBold.otf') format('opentype');
+
+}
+
+@font-face {
+    font-family: 'bosun';
+    src: font_url('bosun.otf') format('opentype');
+
+}
+
 
 // ********************
 //       GLOBAL
@@ -14,8 +42,8 @@ body {
 	padding-top: 50px;
 	padding-right: 15px;
     padding-left: 15px;
-    font-family: Serif;
-    font-size: 1.6em;
+    font-family: 'Georgia';
+    font-size: 1.55em;
 }
 
 .openair-blue {
@@ -32,13 +60,17 @@ ul {
 }
 
 .author {
-	font-style: italic;
+	// font-style: italic;
+    text-transform: uppercase;
+    font-size: .8em;
 }
 
 .openair-btn{
     background: #179ac8;
     text-decoration: none;
     color: white;
+    font-family: 'Aileron-Light';
+    font-size: .8em;
     &:hover{
         border-color: #B8B8B8;
         background: #179ac8;
@@ -50,7 +82,8 @@ ul {
 }
 
 .highlight {
-    background: #ffff99;
+    background: #C2FFA3;
+
 }
 
 /* Custom Container (Fixed) */
@@ -65,9 +98,12 @@ textarea {
     outline: none;
     resize: none;
     // background: #d3d3d3;
-    background: #f5f5f5;
     // padding: 10px;
-    box-shadow: 2px 2px 0px #ccc;
+    border-left: 1px solid #66ccff;
+    padding-left: 10px;
+    font-size: .8em;
+    line-height: 13px;
+    width: 100%;
 }
 
 textarea:focus {
@@ -106,7 +142,7 @@ textarea:focus {
 
 .navbar-fixed-top {
 	background: white;
-	border-bottom: 1px solid #ccc;
+	border-bottom: 1px solid #66ccff;
     padding-right: 15px;
 }
 
@@ -135,8 +171,11 @@ textarea:focus {
     height: 100%;
     margin-left: -250px;
     overflow-y: auto;
-    background: #f5f5f5;
-    box-shadow: 2px 0px 0px #ccc;
+    // background: #f5f5f5;
+    
+    // box-shadow: 2px 0px 0px #179ac8;
+    font-family: Aileron-Regular;
+    font-size: .9em;
     // -webkit-transition: all 0.5s ease;
     // -moz-transition: all 0.5s ease;
     // -o-transition: all 0.5s ease;
@@ -159,9 +198,11 @@ textarea:focus {
 
 .sidebar-nav li {
     // text-indent: 20px;
-    border-bottom: 2px solid #ccc;
+    border-bottom: 1px solid #66ccff;
     width: 100%;
+    height: 60px;
 }
+
 
 .sidebar-nav li a {
     display: block;
@@ -172,14 +213,15 @@ textarea:focus {
 }
 
 .sidebar-nav li a:hover {
-    text-decoration: none;
+    background: white;
+
     // color: blue;
     // background: rgba(255,255,255,0.2);
 }
 
 .sidebar-nav li a:active,
 .sidebar-nav li a:focus {
-    text-decoration: none;
+    // text-decoration: none;
 }
 
 .protip {
@@ -205,6 +247,8 @@ textarea:focus {
 #page-content-wrapper {
     width: 100%;
     padding-top: 15px;
+    line-height: 23px;
+    margin-left: 10px;
 }
 
 #wrapper.toggled #page-content-wrapper {
@@ -222,6 +266,30 @@ textarea:focus {
 	padding-left: 22px; // hanging indent
 	text-indent: -22px; // hanging indent
 	}
+
+#article_title {
+    font-family: Aileron-SemiBold;
+    letter-spacing: 0px;
+}
+
+.section {
+    margin-top: 30px;
+}
+
+#content h3 {
+    font-family: Georgia;
+    font-size: 1.4em;
+    padding-left: 5px;
+    margin-left: 15px;
+    border-left: 3px solid #D4D4D4;
+
+}
+
+#collect {
+    font-family: 'Aileron-Regular';
+    font-size: .8em;
+    margin-top: 8px;
+}
 
 // ********************
 //        HOME
@@ -278,7 +346,7 @@ textarea:focus {
 
 h1, h2 {
 	letter-spacing: -2px;
-	margin-bottom: 25px;
+	// margin-bottom: 25px;
 	font-size: 2em;
     margin-top: 0px;
 }
@@ -288,8 +356,8 @@ h3{
     margin-top: 0px;
 }
 #logo {
-  font-family: Circular;
-  font-size: 2em;
+  font-family: 'Aileron-SemiBold';
+  font-size: 1.9em;
   color: #179ac8;
   letter-spacing: -1px;
   font-weight: bold;
@@ -344,10 +412,10 @@ h3{
 @media(min-width: $screen-md) {
     .container-fixed {
         margin-left: 0 auto;
-        width: 768px;
+        width: 800px;
     }
     .margin{
-        padding-right: 10px;
+        // padding-right: 10px;
     }
     .updates{
         display: inline;

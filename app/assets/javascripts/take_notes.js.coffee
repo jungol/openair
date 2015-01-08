@@ -70,9 +70,9 @@ $.fn.takeNotesTest = ->
 			url: "/notes",
 			data: data,
 			success: ->
-				$('.updates').html('<span class = "processor"> Saved. </span>')
+				#$('.updates').html('<span class = "processor"> Saved. </span>')
 			error: ->
-				$('.updates').html('<span class = "processor"> Your note didn\'t save. Please try refreshing the page. (And sorry about the trouble!) </span>')
+				#$('.updates').html('<span class = "processor"> Your note didn\'t save. Please try refreshing the page. (And sorry about the trouble!) </span>')
 		})
 
 
@@ -93,18 +93,18 @@ $.fn.takeNotesTest = ->
 		)
 
 		$(this).parent().css('margin-bottom', '-23px')
-		$('.updates').html('<span class = "processor"> Editing... (Press Shift + Enter to Save) </span>')
-		$(this).keydown((e)->
-			if (e.shiftKey)
-				$('.updates').html('<span class = "processor"> Press Enter to Save Your Edit...</span>')
-		)	
+		#$('.updates').html('<span class = "processor"> Editing... (Press Shift + Enter to Save) </span>')
+		#$(this).keydown((e)->
+		#	if (e.shiftKey)
+		#		$('.updates').html('<span class = "processor"> Press Enter to Save Your Edit...</span>')
+		#)	
 		$(this).on('blur', ()->
 			$('.updates').html('')
 			$(this).scrollTop(0)
 		)
-		$(this).keyup((e)->
-			$('.updates').html('<span class = "processor"> Editing... (Press Shift + Enter to Save) </span>')
-		)
+		#$(this).keyup((e)->
+		#	$('.updates').html('<span class = "processor"> Editing... (Press Shift + Enter to Save) </span>')
+		#)
 	)
 
 
