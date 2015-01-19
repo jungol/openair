@@ -40,6 +40,7 @@ $.fn.highlight = ->
 		$(this).one("click", backToFullArticle)
 		$('span:not(.highlight)').hide()
 		$('span:visible').wrap('<li></li>')
+		$('.margin').hide()
 		#val = $('.margin').children('textarea').val()
 		#$('.paragraph p').append(val)
 		$('#collect').text("FULL ARTICLE")
@@ -49,6 +50,7 @@ $.fn.highlight = ->
 		$('#collect').text("COLLECT HIGHLIGHTS")
 		$('span:visible').unwrap()
 		$('span:hidden').show()
+		$('.margin').show()
 		$(this).one("click", collectHighlights)
 	
 	$('#collect').one("click", collectHighlights)

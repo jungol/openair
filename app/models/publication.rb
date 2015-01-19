@@ -18,8 +18,8 @@ class Publication < ActiveRecord::Base
   has_many :articles
 
 	#VALIDATIONS
-  validates :issue, presence: true
-  validates :year, presence: true
-  validates :volume, presence: true  
-  validates :journal_id, presence: true
+  # validates :issue, presence: true
+  # validates :year, presence: true
+  # validates :volume, presence: true  
+  # validates :journal_id, presence: true
 end
