@@ -1,7 +1,7 @@
 #signed-out-home
-  / %h1 Got a lot on your plate?
-
-  %p 
-    OpenAir is the online bookshelf that lets you read and annotate your articles in one click. Unlike traditional research databases, OpenAir provides a clean interface that takes care of the busywork so that you can focus on the stuff that really matters.
-
-  = link_to "Get Started", user_omniauth_authorize_path(:facebook), :class => "openair-btn btn navbar-btn"
+  .row
+    .col-xs-6
+      = image_tag("highlight.jpeg")
+    .col-xs-6
+      %h1#headline Highlight and annotate articles with one click
+      = link_to "Get Started", user_omniauth_authorize_path(:facebook), :class => "openair-btn btn navbar-btn"

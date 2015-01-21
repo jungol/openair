@@ -6,6 +6,8 @@
   .author
     -@article.authors.each do |author|
       = author.name
+    -@article.sections.each do |section|
+      = section.id
 
   .source
     / = @article.journal_name
@@ -42,16 +44,16 @@
               - @paragraph_id += 1
 
   .references
-    #citation
-      %h3 
-        Cite this paper
-        = link_to "Click here", cite_article_path(@article)
-    #bibliography
-      %h3 Bibliography
-      %ul
-        %li
-          - @article.bibliography.each do |citation|
-            =citation
+    / #citation
+    /   %h3 
+    /     Cite this paper
+    /     = link_to "Click here", cite_article_path(@article)
+    / #bibliography
+    /   %h3 Bibliography
+    /   %ul
+    /     %li
+    /       - @article.bibliography.each do |citation|
+    /         =citation
 
   // Turn @highlights into javascript object for highlighter.js.coffee
   = content_tag "div", class: "temp_info", data: {highlights: @highlights, copyid: @copy.id, notes: @notes} do

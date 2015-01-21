@@ -91,6 +91,14 @@ ul {
 
 }
 
+#headline {
+    margin-top: 30px;
+    font-family: 'Aileron-SemiBold';
+}
+
+.gov {
+}
+
 /* Custom Container (Fixed) */
 
 
@@ -384,7 +392,7 @@ h3{
     }
 
     #sidebar-wrapper {
-        width: 250px;
+        // width: 250px;
     }
 
     #wrapper.toggled #sidebar-wrapper {
@@ -392,7 +400,7 @@ h3{
     }
 
     #page-content-wrapper {
-        padding-left: 250px;
+        padding-left: 50px;
         // padding-right: 50px;
     }
 

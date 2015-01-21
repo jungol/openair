@@ -5,7 +5,7 @@
       .navbar-right.pull-right
         - if user_signed_in?
           %span.updates
-          = link_to "Cite my articles", citations_path, class: "openair-btn btn navbar-btn"
+          / = link_to "Cite my articles", citations_path, class: "openair-btn btn navbar-btn"
           = link_to "Sign Out", destroy_user_session_path, method: :delete, :class => "openair-btn btn navbar-btn"
         - else 
           = link_to "Sign In", user_omniauth_authorize_path(:facebook), :class => "openair-btn btn navbar-btn"

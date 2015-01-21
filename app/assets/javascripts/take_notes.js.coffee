@@ -54,6 +54,8 @@ $.fn.takeNotesTest = ->
 					content = content + '\r\n'
 			margin.children('textarea').val(content)
 		)
+	
+	$('.margin').children().first().focus()
 
 	keyboardSave = (e, textarea)->
 		if (e.keyCode == 13 && e.shiftKey)
@@ -85,7 +87,6 @@ $.fn.takeNotesTest = ->
 		textarea = $(this)
 		saveNote(textarea)
 	)
-
 
 	$('.margin').children('textarea').on('click', ()->
 		$(this).on('mouseout', ->

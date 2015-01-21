@@ -6,9 +6,21 @@
     \-
 
   %p
-    Thanks for taking OpenAir for a test-drive. OpenAir is a little guy with big dreams! It’s the online notebook that lets you annotate your articles in one click. 
+    Welcome to OpenAir! Highlight and annotate articles in one click. 
+  .row
+    .col-xs-6.gov
+      %h4 Gov 2158: Political Institutions and Economics Policy (Syllabus)
 
-    MORE CONTENT COMING HERE SOON. 
+      %ul
+        %li
+          =link_to "Politics, Delegation, and Bureaucracy", article_path(Article.find_by(id:"3"))
+
+    .col-xs-6.phil
+      %h4 Phil 1000: Philosophy of Quantum Mechanics (Syllabus)
+
+      %ul
+        %li
+          =link_to "Overview", article_path(Article.find_by(id:"3"))
 
   / %p
   /   %ul.icon-list.ok-sign

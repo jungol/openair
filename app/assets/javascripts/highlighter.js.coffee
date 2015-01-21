@@ -72,7 +72,7 @@ $.fn.highlight = ->
 			data: data,
 			success: ->
 			error: ->
-				alert "Hot damn! Something went wrong. Your highlight might not be saved."
+				alert "Oops! Something went wrong. Please try reloading the page."
 		})
 		
 	$('.sentence').on('click', highlightSentence)

@@ -19,7 +19,7 @@ class Article < ActiveRecord::Base
   belongs_to :publication
   has_many :edits
   has_many :authors, through: :edits
-  has_many :sections
+  has_many :sections, -> {order('id ASC')}
   has_many :citations, foreign_key: "citing_id"
   has_many :cited_articles, through: :citations, source: :cited
   has_many :reverse_citations, foreign_key: "cited_id",
