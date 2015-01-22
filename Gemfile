@@ -30,7 +30,7 @@ group :development, :test do
   gem 'factory_girl_rails'
   gem 'jasminerice', :git => 'https://github.com/bradphelan/jasminerice.git'
   gem 'guard-jasmine'
-  gem 'debugger'
+  # gem 'debugger'
 end
 
 group :test do
